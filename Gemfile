@@ -10,6 +10,9 @@ gem 'devise'
 gem 'nifty-generators'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'simple_form'
+gem 'awesome_nested_set'
+
 
 
 # Gems used only for assets and not required
@@ -22,6 +25,9 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer'
+  gem 'less-rails'
+  gem 'twitter-bootstrap-rails', '2.1.7'
 end
 
 gem 'jquery-rails'

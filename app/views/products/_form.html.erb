@@ -1,12 +1,10 @@
-<%= form_for @product do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p><%= f.submit %></p>
+<%= simple_form_for @product, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.select :category_id, nested_set_options(Category, nil) {|i| "#{'-' * i.level} #{i.name}" } %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                products_path, :class => 'btn' %>
+  </div>
 <% end %>
