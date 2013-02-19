@@ -1,7 +1,9 @@
 Oauth::Application.routes.draw do
 
-  resources :categories
+  resources :pictures
 
+
+  resources :categories
 
   match '/auth/:provider/callback' => 'authentications#create'
 

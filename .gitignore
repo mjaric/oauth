@@ -9,6 +9,8 @@
 
 /.idea
 
+/public/uploads
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 

@@ -12,6 +12,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'simple_form'
 gem 'awesome_nested_set'
+gem 'rmagick'
+gem 'carrierwave'
 
 
 
