@@ -7,6 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'sqlite3'
 gem 'devise'
+gem 'cancan'
 gem 'nifty-generators'
 gem 'omniauth'
 gem 'omniauth-twitter'

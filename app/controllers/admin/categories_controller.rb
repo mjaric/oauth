@@ -1,4 +1,6 @@
-class CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::AdminController
+  load_and_authorize_resource
+
   # GET /categories
   # GET /categories.json
   def index

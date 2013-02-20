@@ -1,5 +1,5 @@
-class ProductsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+class Admin::ProductsController < Admin::AdminController
+  load_and_authorize_resource
 
   def index
     @products = Product.all

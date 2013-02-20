@@ -1,19 +1,24 @@
 Oauth::Application.routes.draw do
 
-  resources :pictures
 
-
-  resources :categories
 
   match '/auth/:provider/callback' => 'authentications#create'
 
   resources :authentications
 
-  devise_for :users
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+
 
   resources :products
 
-  root :to => 'products#index'
+  root :to => 'pages#home'
+
+  namespace :admin do
+    resources :users
+    resources :categories
+    resources :products
+    resources :pictures
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -56,11 +61,7 @@ Oauth::Application.routes.draw do
   #   end
 
   # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

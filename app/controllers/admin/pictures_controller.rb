@@ -1,4 +1,4 @@
-class PicturesController < ApplicationController
+class Admin::PicturesController < Admin::AdminController
   # GET /pictures
   # GET /pictures.json
   def index
