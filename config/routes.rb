@@ -1,19 +1,17 @@
 Oauth::Application.routes.draw do
 
-
-
   match '/auth/:provider/callback' => 'authentications#create'
 
   resources :authentications
 
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
-
   resources :products
 
   root :to => 'pages#home'
 
   namespace :admin do
+    root :to => 'products#index'
     resources :users
     resources :categories
     resources :products
