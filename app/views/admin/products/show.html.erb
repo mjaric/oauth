@@ -8,28 +8,15 @@
   <dd><%= @product.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @product.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
+  <dd><%= @product.category_id %></dd>
 </dl>
-
-<ul class="thumbnails">
-  <% for picture in @product.pictures %>
-  <li class="span3">
-    <div class="thumbnail">
-      <%= image_tag picture.image_url(:thumb) if picture.image? %>
-      <h3><%= picture.name %></h3>
-      <p><%= link_to "edit", edit_picture_path(picture) %> |
-        <%= link_to "remove", picture, :confirm => 'Are you sure?', :method => :delete %></p>
-    </div>
-  </li>
-  <% end %>
-</ul>
-
-
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               admin_products_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_admin_product_path(@product), :class => 'btn' %>
+              admin_edit_product_path(@product), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               admin_product_path(@product),
               :method => 'delete',

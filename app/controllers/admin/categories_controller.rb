@@ -4,7 +4,7 @@ class Admin::CategoriesController < Admin::AdminController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.order(sort_column + ' ' + sort_direction).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb

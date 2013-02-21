@@ -1,4 +1,4 @@
-<%= simple_form_for(@picture, :html => {:multipart => true}) do |f| %>
+<%= simple_form_for([:admin, @picture], :html => {:multipart => true}) do |f| %>
   <%= f.error_notification %>
   <%= f.hidden_field :product_id %>
   <div class="form-inputs">

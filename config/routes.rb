@@ -1,5 +1,10 @@
 Oauth::Application.routes.draw do
 
+  namespace :admin do
+    resources :products
+  end
+
+
   match '/auth/:provider/callback' => 'authentications#create'
 
   resources :authentications
