@@ -15,7 +15,8 @@ class Admin::AdminController < ApplicationController
   private
 
   def sort_column
-    controller_name.singularize.classify.constantize.column_names.include?(params[:sort]) ? params[:sort] : 'title'
+    logger.debug('model_class')
+    controller_name.singularize.classify.constantize.column_names.include?(params[:sort]) ? params[:sort] : 'id'
   end
 
   def sort_direction

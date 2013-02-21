@@ -1,4 +1,4 @@
-<%= simple_form_for(@category) do |f| %>
+<%= simple_form_for([:admin,@category]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -10,6 +10,6 @@
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                categories_path, :class => 'btn' %>
+                admin_categories_path, :class => 'btn' %>
   </div>
 <% end %>
