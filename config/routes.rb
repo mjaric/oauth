@@ -1,8 +1,7 @@
 Oauth::Application.routes.draw do
 
-  namespace :admin do
-    resources :products
-  end
+  resources :cart_items
+  resources :carts
 
 
   match '/auth/:provider/callback' => 'authentications#create'
@@ -13,7 +12,7 @@ Oauth::Application.routes.draw do
 
   resources :products
 
-  root :to => 'pages#home'
+  root :to => 'pages#home', as: 'home'
 
   namespace :admin do
     root :to => 'products#index'

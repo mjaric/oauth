@@ -1,6 +1,4 @@
-class Admin::ProductsController < Admin::AdminController
-  load_and_authorize_resource
-
+class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
