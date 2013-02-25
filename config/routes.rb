@@ -12,7 +12,8 @@ Oauth::Application.routes.draw do
 
   resources :products
 
-  root :to => 'pages#home', as: 'home'
+  match 'mycart' => 'store#mycart'
+  root :to => 'store#index', as: 'store'
 
   namespace :admin do
     root :to => 'products#index'

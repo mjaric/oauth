@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require twitter/bootstrap
 //= require custom
 //= require_tree .

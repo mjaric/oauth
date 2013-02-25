@@ -3,7 +3,7 @@
 <% end %>
 
 <h2>Your Pragmatic Cart</h2>
-<ul>
+<ul>    
   <% @cart.cart_items.each do |item| %>
 <!-- START_HIGHLIGHT -->
     <li><%= item.quantity %> &times; <%= item.product.title %></li>
