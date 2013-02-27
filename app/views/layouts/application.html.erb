@@ -96,13 +96,20 @@
 
         <a href="#">
           <div class="panel callout radius">
-            <h6>99&nbsp; items in your cart</h6>
+            <h6>99566&nbsp; items in your cart</h6>
           </div>
         </a>
 
       </div>
 
       <!-- End Side Bar -->
+
+      <% flash.each do |name, msg| %>
+          <div class="alert alert-<%=name%>">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><%= msg %></strong>
+          </div>
+      <% end %>
 
 
       <!-- Thumbnails -->
