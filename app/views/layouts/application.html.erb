@@ -42,8 +42,8 @@
           <section>
             <ul class="left">
               <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
+              <li><%= link_to "Sing out", destroy_user_session_path %></li>
+              <li><a href=""><% if user_signed_in? %>Signed in as <%=current_user.name%><% end %></a></li>
             </ul>
 
             <ul class="right">

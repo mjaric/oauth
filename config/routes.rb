@@ -8,12 +8,13 @@ Oauth::Application.routes.draw do
 
   resources :authentications
 
-  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+  devise_for :users, :controllers => {:registrations => 'registrations'}, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
   resources :products
 
   match 'mycart' => 'store#mycart'
-  root :to => 'store#index', as: 'store'
+
+
 
   namespace :admin do
     root :to => 'products#index'
@@ -22,6 +23,8 @@ Oauth::Application.routes.draw do
     resources :products
     resources :pictures
   end
+
+  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
