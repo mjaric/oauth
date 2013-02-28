@@ -1,6 +1,6 @@
 class CartItem < ActiveRecord::Base
-  belongs_to :product
   belongs_to :cart
+  belongs_to :product
 
   attr_accessible :cart_id, :product_id
 
@@ -10,7 +10,7 @@ class CartItem < ActiveRecord::Base
     product.price
   end
 
-  def full_price
+  def total_price
     unit_price*quantity
   end
 

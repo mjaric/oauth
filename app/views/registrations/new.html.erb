@@ -2,7 +2,13 @@
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
 
-    <%= devise_error_messages! %>
+    <% if @user.password_required? %>
+        <%= devise_error_messages! %>
+    <% else %>
+        <h3>Only one step to finish</h3>
+        <p>Please provide your email address</p>
+    <% end %>
+
 
     <p><%= f.label :email %><br />
       <%= f.text_field :email %></p>

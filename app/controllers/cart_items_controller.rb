@@ -47,14 +47,12 @@ class CartItemsController < ApplicationController
 
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to @cart_item.cart,
-                                  notice: 'Line item was successfully created.' }
-        format.json { render json: @cart_item,
-                             status: :created, location: @cart_item }
+        format.html { redirect_to @cart_item.cart, notice: 'Line item was successfully created.' }
+        format.js
+        format.json { render json: @cart_item, status: :created, location: @cart_item }
       else
         format.html { render action: "new" }
-        format.json { render json: @cart_item.errors,
-                             status: :unprocessable_entity }
+        format.json { render json: @cart_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -83,6 +81,7 @@ class CartItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to cart_items_url }
+      format.js
       format.json { head :no_content }
     end
   end

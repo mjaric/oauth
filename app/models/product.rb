@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   attr_accessible :title, :description, :price, :category_id
+
   belongs_to :category
   has_many :pictures
   has_many :cart_items

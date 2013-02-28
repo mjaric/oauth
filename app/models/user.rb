@@ -14,39 +14,33 @@ class User < ActiveRecord::Base
     self.role == 'admin'
   end
 
-  def self.from_omniauth(auth)
-    email = auth['info']['email']
-    if email
-      where(:email => email).first || create_from_omniauth(auth)
-    else
-      create_from_omniauth(auth)
-    end
-  end
-
-  def create_from_omniauth(omniauth)
-    self.name = omniauth['info']['name']
-    self.email = omniauth['info']['email'] if self.email.blank?
-    authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
-  end
-
-  def apply_omniauth(omniauth)
+  def self.from_omniauth(omniauth)
     email = omniauth['info']['email']
-    self.name = 'toni'
     if email
-      
-      user = User.where(:email => email).first
-      
-      if user
-        self.id = user.id
-        self.email = user.email
-        # authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid']) 
-      else
-        create_from_omniauth(omniauth)
-      end
-      
+      user = User.user_from_database(email, omniauth)
+      user ||= create_from_omniauth(omniauth)
     else
-      create_from_omniauth(omniauth)
+      user = create_from_omniauth(omniauth)
     end
+    user
+  end
+
+  def self.user_from_database(email, omniauth)
+    user = User.where(:email => email).first
+    if user
+      user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    end
+    user
+  end
+
+  def self.create_from_omniauth(omniauth)
+    user = User.new
+    if omniauth['info']
+      user.name = omniauth['info']['name']
+      user.email = omniauth['info']['email']
+      user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+    end
+    user
   end
 
   def password_required?

@@ -1,9 +1,8 @@
 class Cart < ActiveRecord::Base
-  has_many :cart_items
-  has_many :products, :through => :cart_items
+  has_many :cart_items, dependent: :destroy
 
   def total_price
-    cart_items.to_a.sum(&:full_price)
+    cart_items.to_a.sum(&:total_price)
   end
 
   def add_product(product_id)

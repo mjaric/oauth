@@ -1,13 +1,11 @@
-<%= simple_form_for [:admin, @product], :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for [:admin,@product], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
-  <!--<%= f.select :category_id, nested_set_options(Category, nil) {|i| "#{'-' * i.level} #{i.name}" }, label: 'Category'  %>-->
-  <%= f.input :category_id, collection: nested_set_options(Category, nil) {|i| "#{'-' * i.level} #{i.name}" }  %>
+  <%= f.input :category_id %>
+  <%= f.input :price %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 admin_products_path, :class => 'btn' %>
-
-    <%= link_to 'Add Pictures', new_admin_picture_path(:product_id => @product), :class => 'btn' %>
   </div>
 <% end %>

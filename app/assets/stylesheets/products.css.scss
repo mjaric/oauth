@@ -1,3 +1,39 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.my-cart {
+  position: absolute;
+  z-index: 1050;
+  a.close {
+    position: relative;
+    top: 25px;
+    right: 10px;
+  }
+}
+
+
+//.my-cart:after, .my-cart:before {
+//  bottom: 100%;
+//  border: solid transparent;
+//  content: " ";
+//  height: 0;
+//  width: 0;
+//  position: absolute;
+//  pointer-events: none;
+//}
+//
+//.my-cart:after {
+//  border-color: rgba(136, 183, 213, 0);
+//  border-bottom-color: #88b7d5;
+//  border-width: 30px;
+//  left: 50%;
+//  margin-left: -30px;
+//}
+//.my-cart:before {
+//  border-color: rgba(194, 225, 245, 0);
+//  border-bottom-color: #c2e1f5;
+//  border-width: 33px;
+//  left: 50%;
+//  margin-left: -33px;
+//}

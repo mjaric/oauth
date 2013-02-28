@@ -5,4 +5,9 @@ module ApplicationHelper
     direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
+
+  def format_price(price)
+    number_to_currency(price, :unit => 'din', :separator => ',', :format => '%n %u')
+  end
+
 end

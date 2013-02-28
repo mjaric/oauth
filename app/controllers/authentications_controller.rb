@@ -15,13 +15,14 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = 'Authentication successful.'
       redirect_to authentications_url
     else
-      user = User.new
-      user.apply_omniauth(omniauth)
+
+      user = User.from_omniauth(omniauth)
+
       logger.info "New user id: #{user.id}"
 
-      if user.email
+      if user.id
         flash[:notice] = 'Signed in successfully.'
-        sign_in_and_redirect(:user, user)
+        sign_in_and_redirect(:user, user) && return
       end
 
       if user.save

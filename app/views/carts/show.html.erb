@@ -10,3 +10,5 @@
 <!-- END_HIGHLIGHT -->
   <% end %>
 </ul>
+
+<%= link_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-warning' %>
