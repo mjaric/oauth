@@ -17,6 +17,13 @@ class AuthenticationsController < ApplicationController
     else
       user = User.new
       user.apply_omniauth(omniauth)
+      logger.info "New user id: #{user.id}"
+
+      if user.email
+        flash[:notice] = 'Signed in successfully.'
+        sign_in_and_redirect(:user, user)
+      end
+
       if user.save
         flash[:notice] = 'Signed in successfully.'
         sign_in_and_redirect(:user, user)
@@ -33,4 +40,9 @@ class AuthenticationsController < ApplicationController
     flash[:notice] = 'Successfully destroyed authentication.'
     redirect_to authentications_url
   end
+
+  def handle_unverified_request
+      true
+  end
+
 end

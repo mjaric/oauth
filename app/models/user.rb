@@ -31,8 +31,19 @@ class User < ActiveRecord::Base
 
   def apply_omniauth(omniauth)
     email = omniauth['info']['email']
+    self.name = 'toni'
     if email
-      User.where(:email => email).first || create_from_omniauth(omniauth)
+      
+      user = User.where(:email => email).first
+      
+      if user
+        self.id = user.id
+        self.email = user.email
+        # authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid']) 
+      else
+        create_from_omniauth(omniauth)
+      end
+      
     else
       create_from_omniauth(omniauth)
     end
