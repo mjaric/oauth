@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
+  has_many :orders
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -37,7 +38,7 @@ class User < ActiveRecord::Base
     user = User.new
     if omniauth['info']
       user.name = omniauth['info']['name']
-      user.email = omniauth['info']['email']
+      user.email = omniauth['info']['email'] if user.email.blank?
       user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
     end
     user

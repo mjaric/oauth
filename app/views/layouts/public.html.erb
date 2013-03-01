@@ -38,14 +38,11 @@
 
   <div id="my-cart" class="my-cart" style="display: none">
     <a class="close" href="#">&times;</a>
-    <div class="row">
-      <div class="span5">
-        <div class="well">
-          <div id="cart"><%= render 'carts/cart' %></div>
-        </div><!--/.well -->
-      </div>
-    </div>
+    <div class="well">
+      <div id="cart"><%= render 'carts/cart' %></div>
+    </div><!--/.well -->
   </div>
+
 
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
@@ -58,7 +55,7 @@
           <a class="brand" href="#">Oauth</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
+              <li><%= link_to 'Products', products_path %></li>
               <li><%= link_to "Link2", "/path2"  %></li>
             </ul>
             <ul class="nav pull-right">
@@ -75,6 +72,14 @@
     <div class="container">
         <div class="row">
           <div class="span12">
+
+            <% flash.each do |name, msg| %>
+                <div class="alert alert-<%=name%>">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <strong><%= msg %></strong>
+                </div>
+            <% end %>
+
              <%= yield %>
           </div>
         </div><!--/row-->

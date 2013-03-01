@@ -1,25 +1,25 @@
-<h2>My Cart</h2>
+<h2>Moja Korpa</h2>
 <table class="table">
 
   <thead>
   <tr>
-    <th>Kol</th>
     <th>Proizvod</th>
-    <th>Cena</th>
-    <th></th>
+    <th>Cena po kom.</th>
+    <th>Kolicina</th>
+    <th style="text-align: right">Cena</th>
   </tr>
   </thead>
-
-  <%= render(current_cart.cart_items) %>
-
+  <tbody>
+  <%= render(current_cart.line_items) %>
   <tr class="total_line">
-    <td colspan="3"><h4>Total</h4></td>
-    <td class="total_cell" style="text-align: right"><h4><%= format_price(current_cart.total_price) %></h4></td>
+    <td colspan="2"><h4>Ukupno</h4></td>
+    <td colspan="2" class="total_cell" style="text-align: right"><h4><%= format_price(current_cart.total_price) %></h4></td>
   </tr>
+  </tbody>
 
 </table>
 
 
 
-<%= link_to 'Change Cart Items', cart_path(current_cart), :class => 'btn btn-warning' %>
-<a href="#" class="btn btn-info">Proceed to checkout</a>
+<%= link_to raw('<i class="icon-check"></i> Naruci'), new_order_path, :class => 'btn btn-info' %>
+<%= link_to 'Moja Korpa', cart_path(current_cart), :class => 'btn btn-warning pull-right' %>

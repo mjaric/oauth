@@ -18,6 +18,7 @@ gem 'awesome_nested_set'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'kaminari'
+gem 'edge-state-machine', :require => %w(edge-state-machine active_record/edge-state-machine)
 
 
 

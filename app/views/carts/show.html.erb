@@ -4,7 +4,7 @@
 
 <h2>Your Pragmatic Cart</h2>
 <ul>
-  <% @cart.cart_items.each do |item| %>
+  <% @cart.line_items.each do |item| %>
 <!-- START_HIGHLIGHT -->
     <li><%= item.quantity %> &times; <%= item.product.title %></li>
 <!-- END_HIGHLIGHT -->

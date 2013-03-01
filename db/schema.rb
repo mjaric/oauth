@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227153516) do
+ActiveRecord::Schema.define(:version => 20130301160218) do
 
   create_table "admin_products", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -22,14 +22,6 @@ ActiveRecord::Schema.define(:version => 20130227153516) do
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "cart_items", :force => true do |t|
-    t.integer  "cart_id"
-    t.integer  "product_id"
-    t.integer  "quantity"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -49,6 +41,34 @@ ActiveRecord::Schema.define(:version => 20130227153516) do
     t.integer  "depth"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "cart_id"
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "quantity",                                 :default => 1, :null => false
+    t.decimal  "price",      :precision => 8, :scale => 2
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "phone_number2"
+    t.string   "delivery_address"
+    t.string   "delivery_city"
+    t.string   "delivery_zip_code"
+    t.string   "delivery_country"
+    t.string   "status",            :default => "ordering", :null => false
+    t.string   "comment"
+    t.integer  "position"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "pictures", :force => true do |t|

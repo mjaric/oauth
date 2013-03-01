@@ -1,6 +1,6 @@
 Oauth::Application.routes.draw do
 
-  resources :cart_items
+  resources :line_items
   resources :carts
 
 
@@ -11,6 +11,7 @@ Oauth::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => 'registrations'}, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
   resources :products
+  resources :orders
 
   match 'mycart' => 'store#mycart'
 

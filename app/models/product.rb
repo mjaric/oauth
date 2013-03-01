@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :category
   has_many :pictures
-  has_many :cart_items
+  has_many :line_items
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
 
   # ensure that there are no line items referencing this product
   def ensure_not_referenced_by_any_line_item
-    if cart_items.empty?
+    if line_items.empty?
       true
     else
       errors.add(:base, 'Cart Items present')

@@ -1,0 +1,17 @@
+<%= simple_form_for @order, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :email %>
+  <%= f.input :phone_number %>
+  <%= f.input :phone_number2 %>
+  <%= f.input :delivery_address %>
+  <%= f.input :delivery_city %>
+  <%= f.input :delivery_zip_code %>
+  <%= f.input :comment %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                orders_path, :class => 'btn' %>
+  </div>
+<% end %>

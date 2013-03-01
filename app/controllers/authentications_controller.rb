@@ -30,6 +30,7 @@ class AuthenticationsController < ApplicationController
         sign_in_and_redirect(:user, user)
       else
         session[:omniauth] = omniauth.except('extra')
+        #raise session[:omniauth].to_yaml
         redirect_to new_user_registration_url
       end
     end

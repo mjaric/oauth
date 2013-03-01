@@ -1,8 +1,0 @@
-<tr>
-  <td><%= cart_item.quantity %>&times;</td>
-  <td><%= cart_item.product.title %></td>
-  <td class="item_price" style="text-align: right"><%= format_price(cart_item.total_price) %></td>
-  <td>
-    <%= link_to raw('<span class="label label-important">remove</span>') , cart_item, :method => :delete, remote: true %>
-  </td>
-</tr>

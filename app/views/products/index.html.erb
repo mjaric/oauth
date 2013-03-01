@@ -7,6 +7,6 @@
         <%= number_to_currency(product.price, :unit => 'din', :separator => ',', :format => '%n %u') %>
       </h3>
       Category: <%=h product.category.name %>
-      <%= link_to raw('<i class="icon-plus-sign"></i> Add to Cart'), cart_items_path(product_id: product), :method => :post, remote: true, :class => 'btn btn-primary' %>
+      <%= link_to raw('<i class="icon-plus-sign"></i> Add to Cart'), line_items_path(product_id: product), :method => :post, remote: true, :class => 'btn btn-primary' %>
     </div>
 <% end %>
