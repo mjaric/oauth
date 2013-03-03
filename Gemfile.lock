@@ -188,6 +188,7 @@ DEPENDENCIES
   edge-state-machine
   jquery-rails
   kaminari
+  less
   less-rails
   mocha
   nifty-generators

@@ -1,0 +1,14 @@
+.show-cart{
+	position: relative;
+	i{
+		font-size: 18px;
+	}
+	
+}
+
+.nav > li > a > .my-cart-info{
+	position: absolute;
+	top: 3px;
+	right: 	-3px;
+	z-index: 1050;
+}

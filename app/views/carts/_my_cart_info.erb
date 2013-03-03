@@ -1,0 +1,5 @@
+<span>My Cart</span> <i class="icon-shopping-cart"></i>
+<div id="my-cart-info" class="my-cart-info <%= current_cart.line_items.length > 0 ? '':'hide'%>">
+<span class="badge badge-info"><span id="my-cart-info-value"><%=current_cart.line_items.length%></span>
+</span>
+</div> 

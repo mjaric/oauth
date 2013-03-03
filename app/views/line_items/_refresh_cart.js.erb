@@ -1,1 +1,3 @@
-$('#cart').html("<%=j render :partial => 'carts/cart', :object => current_cart %>");
+$('#cart').html("<%=j render @cart %>");
+$('#my-cart-link').html("<%=j render 'carts/my_cart_info' %>");
+$('#order-cart').html("<%=j render @cart %>");

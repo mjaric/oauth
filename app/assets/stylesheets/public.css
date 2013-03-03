@@ -1,5 +1,6 @@
 /*
 *= require_self
-*= require bootstrap_and_overrides.css.less
 *= require products
+*= require bootstrap_and_overrides
+*= require cart
  */

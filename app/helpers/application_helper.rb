@@ -1,4 +1,5 @@
 module ApplicationHelper
+  
   def sortable(column, title = nil)
     title ||= column.titleize
     css_class = column == sort_column ? "current #{sort_direction}" : nil
@@ -7,7 +8,7 @@ module ApplicationHelper
   end
 
   def format_price(price)
-    number_to_currency(price, :unit => 'din', :separator => ',', :format => '%n %u')
+    number_to_currency(price, :unit => 'din', :separator => ',', :delimiter => '.', :format => '%n %u')
   end
 
 end
