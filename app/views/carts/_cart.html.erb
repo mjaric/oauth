@@ -10,7 +10,7 @@
   </tr>
   </thead>
   <tbody>
-  <%= render(current_cart.line_items) %>
+  <%= render :partial => 'line_items/line_item', :collection => current_cart.line_items %>
   <tr class="total_line">
     <td colspan="2"><h4>Ukupno</h4></td>
     <td colspan="2" class="total_cell" style="text-align: right"><h4><%= format_price(current_cart.total_price) %></h4></td>

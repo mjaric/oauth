@@ -1,0 +1,42 @@
+#master-head {
+  #gradient > .vertical(@grayBackground, @grayBackgroundHighlight);
+
+  .navbar-inner {
+    border-top: 1px solid #990823;
+    border-bottom: 1px solid #73061a;
+  }
+
+  .navbar .nav > li > a {
+    padding: 15px 20px;
+  }
+
+  .navbar {
+    .nav {
+      form {
+        margin: 10px 15px;
+      }
+    }
+  }
+
+  .nav .active > a,
+  .nav .active > a:hover,
+  .nav .active > a:focus {
+    .box-shadow(inset 0 1px 15px rgba(0,0,0,.85)); // Redeclare so transitions work
+    border-bottom: 2px solid #D80B31;
+    &:before {
+      margin: 0; padding: 0;
+      content: ' ';
+      height: 0; width: 0;
+      border: 7px solid transparent;
+      border-top-color: #D80B31;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -7px;
+    }
+  }
+
+  .navbar .nav > li.active {
+    position: relative;
+  }
+}

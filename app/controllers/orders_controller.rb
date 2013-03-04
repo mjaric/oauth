@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  load_and_authorize_resource
+
   # GET /orders
   # GET /orders.json
   def index
@@ -92,5 +94,14 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def current_ability
+    @current_ability ||= CustomerAbility.new(current_user)
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to new_user_session_url, :flash => { :error => 'Morate biti ulogovani da bi obavili narucivanje proizvoda.' }
+  end
+
 end
 

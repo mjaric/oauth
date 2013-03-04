@@ -1,18 +1,22 @@
 $(function() {
 
+    $("#my-cart").fixPosition($(".show-cart"));
+
     $(".show-cart").on("click", function(event){
         event.preventDefault();
         $(this).parent('li').toggleClass('active');
-        $("#my-cart").toggle().fixPosition($(this));
+        $("#my-cart").fixPosition($(this)).toggleClass('visi');
     });
 
     $("#my-cart a.close").on("click", function(event){
         event.preventDefault();
         $(".show-cart").parent('li').removeClass('active');
-        $("#my-cart").hide();
+        $("#my-cart").removeClass('visi');
     });
 
-
+    $(window).resize(function() {
+        $("#my-cart").fixPosition($(".show-cart"));
+    });
 
 });
 
@@ -26,10 +30,10 @@ jQuery.fn.fixPosition = function(element) {
 
     var position = element.position();
 
-    this.css({top: position.top + heightOffset});
+    this.css({top: offset.top + heightOffset});
 
     if(offset.left < windowHalf){
-        this.css({left: offset.left-offsetCorrection});
+        this.css({left: offset.left - offsetCorrection});
     } else {
         this.css({right: windowWidth - (offset.left + element.outerWidth()) - offsetCorrection});
     }
