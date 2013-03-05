@@ -2,6 +2,16 @@ $(function() {
 
     $("#my-cart").fixPosition($(".show-cart"));
 
+    var hideMyCart = function(){
+        $(".show-cart").parent('li').removeClass('active');
+        $("#my-cart").removeClass('visi');    
+    }
+
+    var showMyCart = function(){
+        $(".show-cart").parent('li').addClass('active');
+        $("#my-cart").addClass('visi');    
+    }
+
     $(".show-cart").on("click", function(event){
         event.preventDefault();
         $(this).parent('li').toggleClass('active');
@@ -16,6 +26,34 @@ $(function() {
 
     $(window).resize(function() {
         $("#my-cart").fixPosition($(".show-cart"));
+    });
+
+    $('.dropdown-toggle').click(function () {
+        hideMyCart();
+    });
+
+    var myCart = document.getElementById('my-cart');
+    var myCartLink = document.getElementById('my-cart-link');
+
+    $(document).click(function(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+        var visibility = 'hidden';
+        
+        while (target.parentNode) {
+            // console.log(target);
+            if (target == myCart || target == myCartLink) {
+                // console.log('visible');
+                visibility ='visible';
+                break;
+            }
+            target = target.parentNode;
+        }
+
+        if(visibility != 'visible'){
+            // console.log('remove');
+            $(".show-cart").parent('li').removeClass('active');
+            $('#my-cart').removeClass('visi');
+        }
     });
 
 });
