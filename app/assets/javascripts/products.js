@@ -1,5 +1,7 @@
 $(function() {
 
+
+
     $("#my-cart").fixPosition($(".show-cart"));
 
     var hideMyCart = function(){
@@ -65,8 +67,6 @@ jQuery.fn.fixPosition = function(element) {
     var offset = element.offset();
     var offsetCorrection = 10;
     var heightOffset = element.outerHeight();
-
-    var position = element.position();
 
     this.css({top: offset.top + heightOffset});
 

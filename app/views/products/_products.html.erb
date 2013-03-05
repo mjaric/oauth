@@ -1,0 +1,7 @@
+<ul class="thumbnails">
+    <% for product in @products %>
+        <li id="product-<%=product.id%>" class="span3">
+            <%= render :partial => 'products/product', :locals => {:product => product} %>
+        </li>
+    <% end %>
+</ul>

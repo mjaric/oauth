@@ -10,12 +10,21 @@ html, body {
   height: 100%;
 /* Negative indent footer by it's height */
   margin: 0 auto -60px;
-  background: @contentBackground url(img/content-background.png) no-repeat right bottom;
+  background-color: @contentBackground;
+}
+
+#carousel{
+    position: relative;
+    z-index: 9;
 }
 
 #content{
+  position: relative;
+  z-index: 10;
+  padding-top: 50px;
   border-top: 1px solid #dcdcdc;
   .box-shadow(0 -5px 15px -10px rgba(0,0,0,.75));
+  background: @contentBackground url(img/content-background.png) no-repeat right top;
 }
 
 /* Set the fixed height of the footer here */
@@ -24,7 +33,7 @@ html, body {
 }
 
 #footer {
-  border-top: 2px solid @primaryColor;
+  border-top: 2px solid @navbarInverseBorder;
   #gradient > .vertical(@grayBackgroundHighlight, @grayBackground);
   .container .credit {
     margin: 20px 0;

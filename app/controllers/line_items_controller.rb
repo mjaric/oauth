@@ -61,7 +61,7 @@ class LineItemsController < ApplicationController
 
       if successfully
         format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
-        format.js { render partial:'refresh_cart' }
+        format.js { render partial:'refresh_cart', locals: {:product => product} }
         format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
@@ -74,6 +74,7 @@ class LineItemsController < ApplicationController
   # PUT /line_items/1.json
   def update
     @line_item = LineItem.find(params[:id])
+    product = @line_item.product
 
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
@@ -90,11 +91,12 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @line_item = LineItem.find(params[:id])
+    product = @line_item.product
     @line_item.destroy
 
     respond_to do |format|
       format.html { redirect_to line_items_url }
-      format.js { render partial:'refresh_cart' }
+      format.js { render partial:'refresh_cart', locals: {:product => product} }
       format.json { head :no_content }
     end
   end

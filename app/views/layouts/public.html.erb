@@ -48,14 +48,14 @@
         <div id="master-head">
 
             <div class="container">
-              <h3 class="muted">Project name</h3>
+              <h2 class="logo"><%= t(:site_name)%></h2>
             </div>
 
             <div class="navbar navbar-inverse navbar-static-top">
               <div class="navbar-inner">
                 <div class="container">
                   <ul class="nav">
-                    <li class="navbar-brand-logo"><a href="#">svezacipele</a></li>
+                    <li class="navbar-brand-logo"><a href=""><h4 class="logo no-margin"><%= t(:site_name)%></h4></a></li>
                     <li class="active"><a href="#">Home</a></li>
                     <li><a href="#">Projects</a></li>
                     <li><a href="#">Services</a></li>
@@ -111,7 +111,7 @@
                         <div class="row-fluid">
                           <div class="span1"></div>
                           <div class="span6 animated rotateInDownLeft">
-                            <img src="assets/img/slider/image1.png" alt="">
+                            <img src="images/shoes-1.png" alt="">
                           </div>
                           <div class="span4 animated rotateInUpRight block">
                             <h3>Fully Responsive Theme</h3>
@@ -140,7 +140,7 @@
                             <a class="btn btn-danger" href="services.html">Read more</a>
                           </div>
                           <div class="span6 animated rotateInUpRight">
-                            <img src="assets/img/slider/image2.png" alt="">
+                            <img src="images/shoes-2.png" alt="">
                           </div>
 
                         </div>
@@ -159,20 +159,19 @@
         </div><!--/#carousel -->
 
       <div id="content">
-        <div class="container">
-          <div class="row-fluid">
-            <div class="span12">
-              <% flash.each do |name, msg| %>
-                  <div class="alert alert-<%=name%>">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong><%= msg %></strong>
-                  </div>
-              <% end %>
-              <%=yield%>
-            </div>
+
+      <% flash.each do |name, msg| %>
+          <div class="alert alert-<%=name%>">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong><%= msg %></strong>
           </div>
+      <% end %>
+
+        <div class="container">
+            <%=yield%>
         </div>
-      </div>
+
+      </div><!--/#content -->
 
         <div id="push"></div>
     </div><!--/#wrap -->

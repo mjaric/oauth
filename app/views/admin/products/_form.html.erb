@@ -7,5 +7,6 @@
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 admin_products_path, :class => 'btn' %>
+    <%= link_to 'Add pictures', new_admin_picture_path(:product_id => @product.id), :class => 'btn' %>
   </div>
 <% end %>

@@ -1,0 +1,25 @@
+.label,
+.badge {
+    .box-shadow(inset 0px 1px 2px rgba(0,0,0,.5));
+}
+
+.label,
+.badge {
+//// Important (red)
+//    &-important         { background-color: @errorText; }
+//    &-important[href]   { background-color: darken(@errorText, 10%); }
+//// Warnings (orange)
+//    &-warning           { background-color: @orange; }
+//    &-warning[href]     { background-color: darken(@orange, 10%); }
+&-warning              { #gradient > .vertical(@labelWarningBackground, @labelWarningBackgroundHighlight) }
+&-warning[href]        { #gradient > .vertical( darken(@labelWarningBackground, 10%), darken(@labelWarningBackgroundHighlight, 10%) ) }
+//// Success (green)
+//    &-success           { background-color: @successText; }
+//    &-success[href]     { background-color: darken(@successText, 10%); }
+// Info (turquoise)
+    &-info              { #gradient > .vertical(@labelInfoBackground, @labelInfoBackgroundHighlight) }
+    &-info[href]        { #gradient > .vertical( darken(@labelInfoBackground, 10%), darken(@labelInfoBackgroundHighlight, 10%) ) }
+//// Inverse (black)
+//    &-inverse           { background-color: @grayDark; }
+//    &-inverse[href]     { background-color: darken(@grayDark, 10%); }
+}

@@ -1,0 +1,31 @@
+<section class="products">
+    <div class="row-fluid">
+        <div class="span12">
+            <h2>
+                Izdvajamo
+                <span class="pull-right">
+                    <a class="btn" href="#feature-products" data-slide="prev">prev</a>
+                    <a class="btn" href="#feature-products" data-slide="next">next</a>
+                </span>
+            </h2>
+            <hr>
+            <div id="feature-products" class="carousel slide">
+                <div class="carousel-inner">
+                    <% @index = 0 %>
+                    <% @products.each_slice(4) do |slice| %>
+                    <div class="item <%= @index == 0 ? 'active' : ''%>">
+                        <ul class="thumbnails listing-products">
+                            <% slice.each do |product| %>
+                            <li id="product-<%=product.id%>" class="span3">
+                                <%= render :partial => 'products/product', :locals => {:product => product} %>
+                            </li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <% @index += 1 %>
+                    <% end %>
+                </div><!--/.carousel-inner -->
+            </div><!--/#feature-products -->
+        </div>
+    </div>
+</section>
