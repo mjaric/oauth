@@ -5,6 +5,7 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'hirb'
 gem 'sqlite3'
 gem 'devise'
 gem 'cancan'
@@ -55,4 +56,4 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem "mocha", :group => :test
+gem "mocha", "~> 0.12.10", :require => false

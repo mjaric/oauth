@@ -55,9 +55,11 @@
               <div class="navbar-inner">
                 <div class="container">
                   <ul class="nav">
-                    <li class="navbar-brand-logo"><a href=""><h4 class="logo no-margin"><%= t(:site_name)%></h4></a></li>
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Projects</a></li>
+                    <li class="navbar-brand-logo">
+                      <a href=""><h4 class="logo no-margin"><%= t(:site_name)%></h4></a>
+                    </li>
+                    <%= nav_link t(:home), root_path %>
+                    <%= nav_link t(:products), products_path %>
                     <li><a href="#">Services</a></li>
                     <li><a href="#">Downloads</a></li>
                   </ul>
