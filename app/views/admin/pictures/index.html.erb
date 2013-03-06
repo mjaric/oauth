@@ -14,7 +14,9 @@
         <td><%=	 picture.image %></td>
         <td><%= link_to 'Show', admin_picture_path(picture) %>
           <%= link_to 'Edit', edit_admin_picture_path(picture) %>
-          <%= link_to 'Destroy', admin_picture_path(picture), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'Destroy', admin_picture_path(picture), 
+            method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
 <% else %>

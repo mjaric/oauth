@@ -147,7 +147,6 @@
 
                 console.log(data);
                 console.log(data.result);
-                console.log(data.result.files);
                 if (data.context) {
                     data.context.each(function (index) {
                         var file = files[index] || {error: 'Empty file upload result'},
@@ -359,8 +358,8 @@
         },
 
         _getFilesFromResponse: function (data) {
-            if (data && $.isArray(data.files)) {
-                return data.files;
+            if (data && $.isArray(data.result)) {
+                return data.result;
             }
             return [];
         },

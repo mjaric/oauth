@@ -2,4 +2,5 @@
 *= require_self
 *= require bootstrap_and_overrides.css.less
 *= require admin/jquery.fileupload-ui
+*= require admin/bootstrap-image-gallery
  */

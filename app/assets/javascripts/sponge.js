@@ -37,10 +37,10 @@ var SpongeApp = function() {
                 var i, scrollTop = $win.scrollTop();
                 if (scrollTop >= navTop && !isFixed) {
                     isFixed = 1
-                    $nav.addClass('navbar-fixed-top')
+                    $nav.removeClass('navbar-static-top').addClass('navbar-fixed-top')
                 } else if (scrollTop <= navTop && isFixed) {
                     isFixed = 0
-                    $nav.removeClass('navbar-fixed-top')
+                    $nav.addClass('navbar-static-top').removeClass('navbar-fixed-top')
                 }
             }
 
