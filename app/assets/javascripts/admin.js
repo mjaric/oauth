@@ -13,4 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require admin/jquery.ui.widget
+//= require admin/tmpl.min
+//= require admin/load-image.min
+//= require admin/canvas-to-blob.min
+//= require admin/bootstrap-image-gallery.min
+//= require admin/jquery.iframe-transport
+//= require admin/jquery.fileupload
+//= require admin/jquery.fileupload-fp
+//= require admin/jquery.fileupload-ui
+//= require admin/file-upload
 //= require custom

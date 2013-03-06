@@ -91,7 +91,7 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @line_item = LineItem.find(params[:id])
-    product = @line_item.product
+
     @line_item.destroy
 
     respond_to do |format|

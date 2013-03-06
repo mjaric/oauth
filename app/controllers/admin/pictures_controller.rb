@@ -2,10 +2,11 @@ class Admin::PicturesController < Admin::AdminController
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all
+    @product = Product.find(params[:product_id])
+    @pictures = @product.pictures
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => false }
       format.json { render json: @pictures }
     end
   end
@@ -24,7 +25,8 @@ class Admin::PicturesController < Admin::AdminController
   # GET /pictures/new
   # GET /pictures/new.json
   def new
-    @picture = Picture.new(:product_id => params[:product_id])
+    @product = Product.find(params[:product_id])
+    @picture = @product.pictures.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,12 +42,16 @@ class Admin::PicturesController < Admin::AdminController
   # POST /pictures
   # POST /pictures.json
   def create
-    @picture = Picture.new(params[:picture])
+    p_attr = params[:picture]
+    p_attr[:image] = params[:picture][:image].first if params[:picture][:image].class == Array
+
+    @product = Product.find(params[:picture][:product_id])
+    @picture = @product.pictures.build(p_attr)
 
     respond_to do |format|
       if @picture.save
         format.html { redirect_to admin_pictures_path, notice: 'Picture was successfully created.' }
-        format.json { render json: @picture, status: :created, location: @picture }
+        format.json { render json: [@picture.to_jq_upload].to_json }
       else
         format.html { render action: "new" }
         format.json { render json: @picture.errors, status: :unprocessable_entity }

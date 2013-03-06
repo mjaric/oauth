@@ -7,17 +7,24 @@
     <th>Action</th>
   </tr>
 
-<% @pictures.each do |picture| %>
+<% if !@pictures.nil? %>
+    <% @pictures.each do |picture| %>
+      <tr>
+        <td><%=	 picture.name %></td>
+        <td><%=	 picture.image %></td>
+        <td><%= link_to 'Show', admin_picture_path(picture) %>
+          <%= link_to 'Edit', edit_admin_picture_path(picture) %>
+          <%= link_to 'Destroy', admin_picture_path(picture), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+<% else %>
   <tr>
-    <td><%=	 picture.name %></td>
-    <td><%=	 picture.image %></td>
-    <td><%= link_to 'Show', admin_picture_path(picture) %>
-      <%= link_to 'Edit', edit_admin_picture_path(picture) %>
-      <%= link_to 'Destroy', admin_picture_path(picture), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td colspan="3">No Pictures added for this product</td>
   </tr>
 <% end %>
+
 </table>
 
 <br />
 
-<%= link_to 'New Picture', new_admin_picture_path %>
+<%= link_to 'New Picture', new_admin_picture_path(:product_id => @product.id) %>

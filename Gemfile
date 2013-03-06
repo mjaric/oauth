@@ -20,8 +20,7 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'edge-state-machine', :require => %w(edge-state-machine active_record/edge-state-machine)
-
-
+gem 'squeel'
 
 # Gems used only for assets and not required
 # in production environments by default.

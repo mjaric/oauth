@@ -1,6 +1,24 @@
 <%- model_class = Product -%>
+
 <div class="page-header">
-  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
-                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human, :default => "Edit #{model_class.model_name.human}") %></h1>
 </div>
-<%= render :partial => 'form' %>
+
+<div class="bs-docs-example">
+  <ul id="edit-product" class="nav nav-tabs">
+    <li class="active">
+      <a href="#product-detail" data-toggle="tab">Product Detail</a>
+    </li>
+    <li class="">
+      <%= link_to 'Product Images', admin_pictures_path(:product_id => @product.id),  :data => { :target => '#product-images', :toggle => 'tabajax'} %>
+    </li>
+  </ul>
+  <div id="edit-product-content" class="tab-content">
+    <div class="tab-pane fade active in" id="product-detail">
+        <%= render :partial => 'form' %>
+    </div>
+    <div class="tab-pane fade" id="product-images">
+      <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+    </div>
+  </div>
+</div>

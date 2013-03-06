@@ -42,6 +42,16 @@ $(document).ready(function() {
         return false;
     };
 
+    $('[data-toggle="tabajax"]').on('click', function(e) {
+        e.preventDefault();
+        $this = $(this);
+        var loadurl = $(this).attr('href');
+        var targ = $(this).attr('data-target');
+        $(targ).load(loadurl, function(){
+            $this.tab('show');
+        });
+    });
+
 //    // side bar
 //    setTimeout(function () {
 //        $('.bs-docs-sidenav').affix({

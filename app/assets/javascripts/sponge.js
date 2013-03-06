@@ -16,11 +16,14 @@ var SpongeApp = function() {
 
 
 
+
+
+
             jQuery('.top').click(function(){
                 jQuery('html,body').animate({scrollTop: jQuery('body').offset().top}, 'slow');
             }); //move to top navigator
 
-            jQuery('.tooltips').tooltip();
+            jQuery('[rel="tooltip"]').tooltip();
             jQuery('.popovers').popover();
 
             // fix sub nav on scroll
