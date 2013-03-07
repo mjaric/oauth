@@ -1,0 +1,9 @@
+//= require admin/jquery.ui.widget
+//= require admin/tmpl.min
+//= require admin/load-image.min
+//= require admin/canvas-to-blob.min
+//= require admin/jquery.iframe-transport
+//= require admin/jquery.fileupload
+//= require admin/jquery.fileupload-fp
+//= require admin/jquery.fileupload-ui
+//= require admin/file-upload

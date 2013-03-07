@@ -27,14 +27,14 @@ var SpongeApp = function() {
             jQuery('.popovers').popover();
 
             // fix sub nav on scroll
-            var $win = $(window), $nav = $('.navbar'), navTop = $('.navbar').length && $('.navbar').offset().top - 5, isFixed = 0;
+            var $nav = $('.navbar'), navTop = $('.navbar').length && $('.navbar').offset().top - 5, isFixed = 0;
 
-            processScroll()
+            processScroll();
 
-            $win.on('scroll', processScroll)
+            $(window).on('scroll', processScroll)
 
             function processScroll() {
-                var i, scrollTop = $win.scrollTop();
+                var i, scrollTop = $(window).scrollTop();
                 if (scrollTop >= navTop && !isFixed) {
                     isFixed = 1
                     $nav.removeClass('navbar-static-top').addClass('navbar-fixed-top')

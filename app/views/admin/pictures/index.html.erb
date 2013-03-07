@@ -1,32 +1,49 @@
+<div id="pictures-listing">
 <h1>Listing pictures</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Image</th>
-    <th>Action</th>
-  </tr>
 
-<% if !@pictures.nil? %>
-    <% @pictures.each do |picture| %>
+    <table>
       <tr>
-        <td><%=	 picture.name %></td>
-        <td><%=	 picture.image %></td>
-        <td><%= link_to 'Show', admin_picture_path(picture) %>
-          <%= link_to 'Edit', edit_admin_picture_path(picture) %>
-          <%= link_to 'Destroy', admin_picture_path(picture), 
-            method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>
+
+    <% if !@pictures.nil? %>
+        <% @pictures.each do |picture| %>
+          <tr>
+            <td><%=	 picture.name %></td>
+            <td>
+              <%= image_tag(picture.image_url(:thumb)) %>
+            </td>
+            <td><%= link_to 'Show', admin_picture_path(picture) %>
+              <%= link_to 'Edit', edit_admin_picture_path(picture) %>
+              <%= link_to 'Destroy', admin_picture_path(picture),
+                method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+    <% else %>
+      <tr>
+        <td colspan="3">No Pictures added for this product</td>
       </tr>
     <% end %>
-<% else %>
-  <tr>
-    <td colspan="3">No Pictures added for this product</td>
-  </tr>
-<% end %>
+    </table>
 
-</table>
+</div>
+
 
 <br />
 
-<%= link_to 'New Picture', new_admin_picture_path(:product_id => @product.id) %>
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+
+</div>
+
+<%= link_to 'Add Pictures',
+    new_admin_picture_path(:product_id => @product.id),
+    :class => 'modal-ajax',
+    data: {
+        :target => '#modal', :reloadtarget => '#pictures-listing', :reloadurl => admin_pictures_path(:product_id => @product.id)
+    }
+%>

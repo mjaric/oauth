@@ -23,4 +23,5 @@
 //= require admin/jquery.fileupload-fp
 //= require admin/jquery.fileupload-ui
 //= require admin/file-upload
+//= require admin/modal-ajax
 //= require custom

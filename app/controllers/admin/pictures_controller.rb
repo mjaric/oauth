@@ -29,7 +29,7 @@ class Admin::PicturesController < Admin::AdminController
     @picture = @product.pictures.build
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => false }
       format.json { render json: @picture }
     end
   end
@@ -50,6 +50,7 @@ class Admin::PicturesController < Admin::AdminController
 
     respond_to do |format|
       if @picture.save
+        #format.html { redirect_to admin_pictures_path, notice: 'Picture was successfully created.' }
         format.html { redirect_to admin_pictures_path, notice: 'Picture was successfully created.' }
         format.json { render json: [@picture.to_jq_upload].to_json }
       else

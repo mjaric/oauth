@@ -1,4 +1,8 @@
 $('#cart').html("<%=j render 'carts/cart' %>");
 $('#my-cart-link').html("<%=j render 'carts/my_cart_info' %>");
 $('#order-cart').html("<%=j render 'carts/cart' %>");
-$('#product-<%=product.id%>').html("<%=j render :partial => 'products/product', :locals => {:product => product} %>");
+
+if ($("#product-<%=product.id%>").length > 0){
+    $('#product-<%=product.id%>').html("<%=j render :partial => 'products/product', :locals => {:product => product} %>");
+}
+
