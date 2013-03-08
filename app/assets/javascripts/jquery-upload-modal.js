@@ -1,3 +1,5 @@
+//= require jquery
+//= require jquery_ujs
 //= require admin/jquery.ui.widget
 //= require admin/tmpl.min
 //= require admin/load-image.min

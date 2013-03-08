@@ -1,65 +1,4 @@
-$(document).ready(function() {
-
-    var updateDiv = function(target, url){
-        var div = $(target);
-        if(div.length > 0 && url != ''){
-            $.ajax({
-                type: 'GET',
-                url: url,
-                dataType: "html",
-                success: function(data){
-                    div.html(data);
-                }
-            });
-        }
-    };
-
-    $(document).on("click", ".modal-ajax", function (e) {
-        e.preventDefault();
-        console.log('in modal ajax');
-        var $this = $(this);
-        var label = $(this).html();
-        var id = $(this).attr('id');
-        var url = $(this).attr('href');
-
-        var reloadTarget = $(this).data('reloadtarget');
-        var reloadUrl = $(this).data('reloadurl');
-
-        var modalAjax = $('<div></div>').attr({
-            id: 'modal-ajax',
-            class: 'modal hide fade',
-            style: 'display:none'
-        });
-
-        $.ajax({
-            type: 'GET',
-            url: url,
-            dataType: "html",
-            beforeSend: function(){
-//                $this.loading();
-            },
-            success: function(data){
-
-                if($('#modal-ajax').length == 0){
-                    $('body').append(modalAjax);
-                }
-
-                var modalObj = $('#modal-ajax');
-
-                modalObj.html(data);
-                modalObj.modal('show').modalFix();
-
-                modalObj.on('hidden', function(){
-                    $(this).removeData('modal');
-                    $('div').remove('#modal-ajax');
-                    if(reloadTarget) updateDiv(reloadTarget, reloadUrl);
-                })
-            },
-            complete: function(){
-//                $this.loading();
-            }
-        });
-    });
+$(function() {
 
     $.fn.modalFix = function(opts) {
         // set default options
@@ -133,9 +72,77 @@ $(document).ready(function() {
         return scrOfY;
     }
 
+})
+
+$(document).ready(function() {
+
+    var updateDiv = function(target, url){
+        var div = $(target);
+        if(div.length > 0 && url != ''){
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: "html",
+                success: function(data){
+                    div.html(data);
+                }
+            });
+        }
+    };
+
+    $(document).on("click", ".modal-ajax", function (e) {
+        e.preventDefault();
+        // console.log('in modal ajax');
+        var $this = $(this);
+        var label = $(this).html();
+        var id = $(this).attr('id');
+        var url = $(this).attr('href');
+
+        var reloadTarget = $(this).data('reloadtarget');
+        var reloadUrl = $(this).data('reloadurl');
+
+        var modalAjax = $('<div></div>').attr({
+            id: 'modal-ajax',
+            class: 'modal hide fade',
+            style: 'display:none'
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType: "html",
+            beforeSend: function(){
+//                $this.loading();
+            },
+            success: function(data){
+
+                if($('#modal-ajax').length == 0){
+                    $('body').append(modalAjax);
+                }
+
+                var modalObj = $('#modal-ajax');
+
+                modalObj.html(data);
+
+                modalObj.modal('show').modalFix();
+
+                modalObj.on('hidden', function(){
+                    $(this).removeData('modal');
+                    $('div').remove('#modal-ajax');
+                    if(reloadTarget) updateDiv(reloadTarget, reloadUrl);
+                })
+            },
+            complete: function(){
+//                $this.loading();
+            }
+        });
+    });
+
+    
+
     // Fix modal position when window change size
     window.onresize = function(){
-        $('.modal').modalFix({filter:':visible'});
+        // $('.modal').modalFix({filter:':visible'});
     };
 
     $('.modal').bind('hidden', function(){

@@ -30,20 +30,20 @@
     <% end %>
     </table>
 
-</div>
+
 
 
 <br />
 
 <div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
-
 </div>
 
 <%= link_to 'Add Pictures',
     new_admin_picture_path(:product_id => @product.id),
     :class => 'modal-ajax',
     data: {
-        :target => '#modal', :reloadtarget => '#pictures-listing', :reloadurl => admin_pictures_path(:product_id => @product.id)
+        :target => '#modal', :reloadtarget => '#product-images', :reloadurl => admin_pictures_path(:product_id => @product.id)
     }
 %>
+
+</div>

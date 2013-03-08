@@ -63,10 +63,12 @@
   <button class="btn btn-primary">Save changes</button>
 </div>
 
-<%= javascript_include_tag "jquery-upload-modal" %>
+<script type="text/javascript">
+  $('#fileupload').fileupload().bind('fileuploaddone', function (e, data) { alert ('done') });
+</script>
 
 <!-- The template to display files available for upload -->
-<script id="template-upload" type="text/x-tmpl">
+<script id="template-upload" type="text/x-tmpl">  
   {% for (var i=0, file; file=o.files[i]; i++) { %}
   <tr class="template-upload fade">
     <td class="preview"><span class="fade"></span></td>
