@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require admin/bootstrap-editable.min
+//= require admin/bootstrap-editable-rails
 //= require admin/jquery.ui.widget
 //= require admin/tmpl.min
 //= require admin/load-image.min

@@ -65,6 +65,8 @@ class Admin::PicturesController < Admin::AdminController
   def update
     @picture = Picture.find(params[:id])
 
+    logger.info(params[:picture])
+
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
         format.html { redirect_to admin_pictures_path, notice: 'Picture was successfully updated.' }

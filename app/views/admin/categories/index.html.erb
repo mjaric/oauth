@@ -41,6 +41,8 @@
   </tbody>
 </table>
 
+<%= paginate @categories %>
+
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_admin_category_path,
             :class => 'btn btn-primary' %>

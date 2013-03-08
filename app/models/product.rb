@@ -1,9 +1,10 @@
 class Product < ActiveRecord::Base
-  attr_accessible :title, :description, :price, :category_id
+  attr_accessible :title, :description, :price, :category_id, :default_picture_id
 
   belongs_to :category
   has_many :pictures, dependent: :destroy
   has_many :line_items
+  has_one :default_picture, :class_name => 'Picture'
 
   before_destroy :ensure_not_referenced_by_any_line_item
 

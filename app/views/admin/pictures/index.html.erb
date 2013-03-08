@@ -3,31 +3,43 @@
 
 
     <table>
-      <tr>
-        <th>Name</th>
-        <th>Image</th>
-        <th>Action</th>
-      </tr>
-
-    <% if !@pictures.nil? %>
-        <% @pictures.each do |picture| %>
+        <thead>
           <tr>
-            <td><%=	 picture.name %></td>
-            <td>
-              <%= image_tag(picture.image_url(:thumb)) %>
-            </td>
-            <td><%= link_to 'Show', admin_picture_path(picture) %>
-              <%= link_to 'Edit', edit_admin_picture_path(picture) %>
-              <%= link_to 'Destroy', admin_picture_path(picture),
-                method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
-            </td>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="gallery"  data-toggle="modal-gallery" data-target="#modal-gallery">
+        <% if !@pictures.nil? %>
+            <% @pictures.each do |picture| %>
+              <tr>
+                <td>
+                  <%= link_to picture.name ||= '', '#', :class => 'editable',
+                        :data => {
+                            :resource => 'picture', :name => 'name', :type => 'text', :url => admin_picture_path(picture), :pk => picture.id,
+                            :'original-title' => 'Edit Name', :emptytext => 'Add Picture Name'
+                        }
+                  %>
+                </td>
+                <td>
+                  <a href="<%= picture.image_url %>" title="<%= picture.name %>" data-gallery="gallery" >
+                    <%= image_tag(picture.image_url(:thumb)) %>
+                  </a>
+                </td>
+                <td><%= link_to 'Default', admin_product_path(@product), :class => 'set-default', :data => { :resource => 'product', :name => 'default_picture_id', :value => picture.id } %>
+                  <%= link_to 'Edit', edit_admin_picture_path(picture) %>
+                  <%= link_to 'Destroy', admin_picture_path(picture),
+                    method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+                </td>
+              </tr>
+            <% end %>
+        <% else %>
+          <tr>
+            <td colspan="3">No Pictures added for this product</td>
           </tr>
         <% end %>
-    <% else %>
-      <tr>
-        <td colspan="3">No Pictures added for this product</td>
-      </tr>
-    <% end %>
+        </tbody>
     </table>
 
 
@@ -38,6 +50,38 @@
 <div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 </div>
 
+<script type="text/javascript">
+    $('.editable').editable();
+
+    $('.set-default').on('click', function(e){
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        var resource = $(this).data('resource');
+        var name = $(this).data('name');
+        var value = $(this).data('value');
+
+        var nameValue = {};
+        nameValue[name] = value;
+
+        var params = {};
+        params[resource] = nameValue;
+
+        console.log(params);
+
+        $.ajax({
+            type: 'PUT',
+            url: url,
+            dataType: "json",
+            data: params,
+            success: function(data){
+                alert('Success!')
+            }
+        });
+
+    });
+</script>
+
 <%= link_to 'Add Pictures',
     new_admin_picture_path(:product_id => @product.id),
     :class => 'modal-ajax',
@@ -46,4 +90,20 @@
     }
 %>
 
+<!-- modal-gallery is the modal dialog used for the image gallery -->
+<div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
+<div class="modal-header">
+  <a class="close" data-dismiss="modal">&times;</a>
+  <h3 class="modal-title"></h3>
 </div>
+<div class="modal-body"><div class="modal-image"></div></div>
+<div class="modal-footer">
+  <a class="btn btn-primary modal-next">Next <i class="icon-arrow-right icon-white"></i></a>
+  <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i> Previous</a>
+  <a class="btn btn-success modal-play modal-slideshow" data-slideshow="5000"><i class="icon-play icon-white"></i> Slideshow</a>
+  <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>
+</div>
+</div>
+
+</div>
+
