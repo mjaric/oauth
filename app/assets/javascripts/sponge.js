@@ -14,11 +14,6 @@ var SpongeApp = function() {
                 interval: false
             });
 
-
-
-
-
-
             jQuery('.top').click(function(){
                 jQuery('html,body').animate({scrollTop: jQuery('body').offset().top}, 'slow');
             }); //move to top navigator
@@ -27,7 +22,7 @@ var SpongeApp = function() {
             jQuery('.popovers').popover();
 
             // fix sub nav on scroll
-            var $nav = $('.navbar'), navTop = $('.navbar').length && $('.navbar').offset().top - 5, isFixed = 0;
+            var $nav = $('#master-head .navbar'), navTop = $('#master-head .navbar').length && $('#master-head .navbar').offset().top - 5, isFixed = 0;
 
             processScroll();
 

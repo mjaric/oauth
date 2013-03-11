@@ -9,7 +9,7 @@ html, body {
   height: auto !important;
   height: 100%;
 /* Negative indent footer by it's height */
-  margin: 0 auto -60px;
+  margin: 0 auto -120px;
   background-color: @contentBackground;
 }
 
@@ -24,12 +24,16 @@ html, body {
   padding: 50px 0;
   border-top: 1px solid #dcdcdc;
   .box-shadow(0 -5px 15px -10px rgba(0,0,0,.75));
-  background: @contentBackground url(img/content-background.png) no-repeat right top;
+  background: @contentBackground url(img/content-background.png) no-repeat left top;
+    .hero-unit{
+        padding-top: 30px; margin-bottom: 0;
+        #translucent > .background(@primaryColor, 0.5);
+    }
 }
 
 /* Set the fixed height of the footer here */
 #push, #footer {
-  height: 60px;
+  height: 120px;
 }
 
 #footer {
@@ -37,6 +41,7 @@ html, body {
   #gradient > .vertical(@grayBackgroundHighlight, @grayBackground);
   .container .credit {
     margin: 20px 0;
+    color: white;
   }
 }
 

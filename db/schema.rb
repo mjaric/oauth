@@ -13,6 +13,11 @@
 
 ActiveRecord::Schema.define(:version => 20130308154325) do
 
+  create_table "admin_products", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
