@@ -1,27 +1,29 @@
 <% title "Products" %>
 
     <div class="row-fluid">
-        <div class="span4">
-            <h2 class="well-title">Proizvodi</h2>
-        </div>
-        <div class="span8">
-
-          <div class="btn-toolbar" style="margin: 0;">
-            <div class="btn-group">
-              <button class="btn btn-warning">Sortirano po ceni <i class="icon-arrow-up"></i></button>
-              <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li class="active"><a href="#">Cena <i class="icon-arrow-up"></i></a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
+            <div class="span4">
+                <h2 class="well-title">Proizvodi</h2>
             </div>
-          </div>
+            <div class="span8">
+
+              <div class="btn-toolbar pull-right sort-actions">
+                <div class="btn-group">
+                  <button class="btn btn-warning">Sortirano po ceni <i class="icon-arrow-up"></i></button>
+                  <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li class="active"><a href="#">Cena <i class="icon-arrow-up"></i></a></li>
+                    <li><a href="#">Naziv proizvoda</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div>
+              </div>
 
 
-        </div>
+            </div>
+
     </div>
+
+    <hr class="divide"/>
 
     <%=	 render 'products' %>

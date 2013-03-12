@@ -1,7 +1,13 @@
-<ul class="thumbnails">
-    <% for product in @products %>
+<div class="row-fluid">
+    <% @index = 0 %>
+    <% @products.each_slice(4) do |slice| %>
+    <ul class="thumbnails">
+        <% slice.each do |product| %>
         <li id="product-<%=product.id%>" class="span3">
             <%= render :partial => 'products/product', :locals => {:product => product} %>
         </li>
+        <% end %>
+    </ul>
+    <% @index += 1 %>
     <% end %>
-</ul>
+</div>
