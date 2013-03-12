@@ -10,16 +10,25 @@
   </tr>
   </thead>
   <tbody>
+  <% if current_cart.line_items.count > 0 %>
   <%= render :partial => 'line_items/line_item', :collection => current_cart.line_items %>
   <tr class="total_line">
     <td colspan="2"><h4>Ukupno</h4></td>
     <td colspan="2" class="total_cell" style="text-align: right"><h4><%= format_price(current_cart.total_price) %></h4></td>
   </tr>
+  <% else %>
+  <tr>
+    <td colspan="4">Vasa korpa je prazna</td>
+  </tr>
+  <tr>
+    <td colspan="4">&nbsp;</td>
+  </tr>
+  <% end %>
   </tbody>
 
 </table>
 
-
-
+<div class="btn-toolbar">
 <%= link_to raw('<i class="icon-check"></i> Naruci'), new_order_path, :class => 'btn btn-info' %>
 <%= link_to 'Moja Korpa', cart_path(current_cart), :class => 'btn btn-warning pull-right' %>
+</div>

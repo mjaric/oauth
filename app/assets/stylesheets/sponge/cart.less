@@ -1,0 +1,33 @@
+.cart{
+	width: 500px;
+    .table {
+        margin-bottom: 0;
+    }
+	.btn-toolbar{
+		margin-top: 0; margin-bottom: 15px;
+	}
+	
+}
+
+.in-cart{
+	#gradient > .vertical( @white, lighten(@primaryColor, 25%) );
+	border: 1px solid @primaryColor;
+    .box-shadow(0 0 5px rgba(255,154,0,.5));	
+	position: relative;
+	i.icon-top-info {
+		&.icon-shopping-cart{
+			font-size: 65px;
+			position: absolute;
+			width: auto; height: auto;
+			top: 0px; right: -5px;
+			color: @primaryColor;
+			span {
+				&.badge {
+					position: absolute;
+					left: 20px; top: 0;
+					font-style: normal;
+				}
+			}			
+		}
+	}
+}
