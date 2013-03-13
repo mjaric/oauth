@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require admin/bootstrap-editable.min
 //= require admin/bootstrap-editable-rails
+//= require admin/bootstrap-notify
 //= require admin/jquery.ui.widget
 //= require admin/tmpl.min
 //= require admin/load-image.min

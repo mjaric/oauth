@@ -1,0 +1,6 @@
+$('#pictures').html("<%=j render 'admin/pictures/pictures', :locals => {:pictures => pictures} %>");
+
+$('.top-right').notify({
+    message: { text: '<%= notice %>' },
+    type: 'blackgloss'
+}).show();

@@ -1,0 +1,34 @@
+<div class="row-fluid" id="gallery"  data-toggle="modal-gallery" data-target="#modal-gallery">
+  <ul class="thumbnails">
+    <% if !@pictures.nil? %>
+    <% @pictures.each_with_index do |picture, index| %>
+    <% default = (picture.id == @product.default_picture_id) ? true : false %>
+    <li class="span3 <%= 'no-margin-left' if index % 4 == 0 %> <%= 'default' if default %>">
+      <div class="thumbnail">
+        <a href="<%= picture.image_url %>" title="<%= picture.name %>" data-gallery="gallery" >
+          <%= image_tag(picture.image_url(:thumb)) %>
+        </a>
+        <div class="caption">
+          <h5>
+            <%= link_to picture.name ||= '', '#', :class => 'editable',
+                :data => {
+                    :resource => 'picture', :name => 'name', :type => 'text', :url => admin_picture_path(picture), :pk => picture.id,
+                    :'original-title' => 'Picture Name', :emptytext => 'Add Picture Name'
+                }
+            %>
+          </h5>
+          <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
+          <p>
+            <%= link_to 'Default', admin_product_path(@product), :class => "btn btn-info set-default #{ 'disabled' if default }", :data => { :resource => 'product', :name => 'default_picture_id', :value => picture.id } %>
+            <%= link_to 'Delete', admin_picture_path(picture), :class => 'btn btn-danger', method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+          </p>
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <% else %>
+    <div class="alert">No Pictures added for this product.</div>
+    <% end %>
+  </ul>
+</div>
+

@@ -65,8 +65,6 @@ class Admin::PicturesController < Admin::AdminController
   def update
     @picture = Picture.find(params[:id])
 
-    logger.info(params[:picture])
-
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
         format.html { redirect_to admin_pictures_path, notice: 'Picture was successfully updated.' }
@@ -82,10 +80,17 @@ class Admin::PicturesController < Admin::AdminController
   # DELETE /pictures/1.json
   def destroy
     @picture = Picture.find(params[:id])
+    @product = Product.find(@picture.product_id)
+
+    # DELETE picture
     @picture.destroy
+
+    # Return list of available pictures for current product
+    @pictures = @product.pictures
 
     respond_to do |format|
       format.html { redirect_to admin_pictures_path }
+      format.js { render partial:'refresh_list', locals: {:pictures => @pictures, :notice => 'Picture was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

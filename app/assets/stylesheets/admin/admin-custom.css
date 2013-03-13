@@ -1,0 +1,8 @@
+.no-margin-left {
+    margin-left: 0 !important;
+}
+
+.default .thumbnail {
+    background-color: #fde19a;
+}
+
