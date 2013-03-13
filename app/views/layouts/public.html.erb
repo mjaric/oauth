@@ -54,9 +54,19 @@
             <div class="navbar navbar-inverse navbar-static-top">
               <div class="navbar-inner">
                 <div class="container">
+
+                  <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+
+                  <div class="nav-collapse collapse navbar-responsive-collapse">
+
                   <ul class="nav">
                     <li class="navbar-brand-logo">
-                      <a href=""><h4 class="logo no-margin"><%= t(:site_name)%></h4></a>
+                      <a href="<%= root_path %>"><h4 class="logo no-margin"><%= t(:site_name)%></h4></a>
                     </li>
                     <%= nav_link t(:home), root_path %>
                     <%= nav_link t(:products), products_path %>
@@ -101,6 +111,9 @@
                         </li>
                     <% end %>
                   </ul>
+
+                </div>
+                
                 </div>
               </div>
             </div>

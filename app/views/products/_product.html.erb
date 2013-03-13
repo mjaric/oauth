@@ -1,5 +1,5 @@
 <div class="thumbnail product <%= current_cart.count_product(product.id) != '' ? 'in-cart' : '' %>">
-    <%= product_thumbanil_tag(product) %>
+    <%= product_image_tag(product) %>
     <% @count = current_cart.count_product(product.id) %>
     <% if @count != '' %>
     <i class="icon-shopping-cart icon-top-info">

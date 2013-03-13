@@ -1,7 +1,7 @@
 module ProductsHelper
 
     def product_image_tag(product, options = {})
-        options[:size] ||= "300x200"
+        options[:size] ||= "320x240"
 
         picture = product.default_picture_id ? product.pictures.find(product.default_picture_id) : product.pictures.first
 
