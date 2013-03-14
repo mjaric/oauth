@@ -23,7 +23,7 @@ $(function() {
     $("#my-cart a.close").on("click", function(event){
         event.preventDefault();
         $(".cart-toggle").parent('li').removeClass('open');
-        $("#my-cart").removeClass('visi');#274e13
+        $("#my-cart").removeClass('visi');
     });
 
     $(window).resize(function() {
