@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.base_search(params[:search])
+    @products = Product.base_search(params[:search]).order(sort_column + ' ' + sort_direction).page(params[:page]).per(4)
 
     respond_to do |format|
       format.html # index.html.erb

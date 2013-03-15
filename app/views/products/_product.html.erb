@@ -1,5 +1,7 @@
 <div class="thumbnail product <%= current_cart.count_product(product.id) != '' ? 'in-cart' : '' %>">
-    <%= product_image_tag(product) %>
+    <a href="<%= product_path(product) %>">
+        <%= product_image_tag(product) %>
+    </a>
     <% @count = current_cart.count_product(product.id) %>
     <% if @count != '' %>
     <i class="icon-shopping-cart icon-top-info">
@@ -7,7 +9,9 @@
     </i>
     <% end %>
     <div class="caption">
-      <h3 class="title"><%= link_to h(product.title), product %></h3>
+      <h3 class="title">
+        <a href="<%= product_path(product) %>"><%= shorty(product.title, 70) %></a>
+      </h3>
       <hr/>
       <p><% product.description %></p>
       <h2 class="price"><%= format_price(product.price) %></h2>

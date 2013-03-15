@@ -1,7 +1,7 @@
 <%- model_class = Product -%>
-<div class="page-header">
-    <h2><%= @product.title %></h2>
-</div>
+<%- count = current_cart.count_product(@product.id) -%>
+<h2><%= @product.title %></h2>
+<hr class="divide">
 
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
@@ -13,5 +13,10 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")), products_path, :class => 'btn'  %>
+  <%= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn'  %>
+  <% if count != '' %>
+      <p><%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj jos u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-warning' %></p>
+  <% else %>
+      <p><%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-primary' %></p>
+  <% end %>
 </div>

@@ -6,3 +6,6 @@ if ($("#product-<%=product.id%>").length > 0){
     $('#product-<%=product.id%>').html("<%=j render :partial => 'products/product', :locals => {:product => product} %>");
 }
 
+// Init tooltip in case that product have long name
+$('[rel="tooltip"]').tooltip();
+

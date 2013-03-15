@@ -1,36 +1,40 @@
 <section class="products">
     <div class="row-fluid">
-        <div class="span4">
+        <div class="span12">
             <h2>
                 Izdvajamo
+                <span class="pull-right">
+                    <a class="" href="#feature-products" data-slide="prev" style="margin-right: 10px;">‹</a>
+                    <a class="" href="#feature-products" data-slide="next">›</a>
+                </span>
             </h2>
-        </div>
-        <div class="span8">
-          <div class="btn-group pull-right">
-            <a class="btn btn-primary" href="#feature-products" data-slide="prev"><i class="icon-arrow-left"></i></a>
-            <a class="btn btn-primary" href="#feature-products" data-slide="next"><i class="icon-arrow-right"></i></a>
-          </div>
         </div>
     </div>
     <hr class="divide"/>
     <div class="row-fluid">
-            <div id="feature-products" class="carousel slide">
-                <div class="carousel-inner">
-                    <% @index = 0 %>
-                    <% @products.each_slice(4) do |slice| %>
-                    <div class="item <%= @index == 0 ? 'active' : ''%>">
-                        <ul class="thumbnails listing-products">
-                            <% slice.each do |product| %>
-                            <li id="product-<%=product.id%>" class="span3">
-                                <%= render :partial => 'products/product', :locals => {:product => product} %>
-                            </li>
-                            <% end %>
-                        </ul>
-                    </div>
-                    <% @index += 1 %>
-                    <% end %>
-                </div><!--/.carousel-inner -->
-            </div><!--/#feature-products -->
+        <div id="feature-products" class="carousel slide">
+            <div class="carousel-inner">
+                <% @index = 0 %>
+                <% @products.each_slice(4) do |slice| %>
+                <div class="item <%= @index == 0 ? 'active' : ''%>">
+                    <ul class="thumbnails listing-products">
+                        <% slice.each do |product| %>
+                        <li id="product-<%=product.id%>" class="span3">
+                            <%= render :partial => 'products/product', :locals => {:product => product} %>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <% @index += 1 %>
+                <% end %>
+            </div><!--/.carousel-inner -->
+        </div><!--/#feature-products -->
         </div>
+    </div>
+   <hr class="divide"/>
+    <div class="row-fluid">
+      <div class="pull-right">
+        <a href="<%= products_path %>" class="btn btn-large btn-warning"> <i class=" icon-circle-arrow-right icon-2x pull-right"></i>Pogledajte sve <br>proizvode</a>
+      </div>
     </div>
 </section>

@@ -8,17 +8,16 @@
 
               <div class="btn-toolbar pull-right sort-actions">
                 <div class="btn-group">
-                  <button class="btn btn-warning">Sortirano po ceni <i class="icon-arrow-up"></i></button>
-                  <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                  <button class="btn btn-warning"><%= sort_info %></button>
+                  <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
                   <ul class="dropdown-menu">
-                    <li class="active"><a href="#">Cena <i class="icon-arrow-up"></i></a></li>
-                    <li><a href="#">Naziv proizvoda</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><%= sorting('price', t(:price)+' '+t(:asc), 'asc') %></li>
+                    <li><%= sorting('price', t(:price)+' '+t(:desc), 'desc') %></li>
+                    <li><%= sorting('title', t(:title)+' '+t(:asc), 'asc') %></li>
+                    <li><%= sorting('title', t(:title)+' '+t(:desc), 'desc') %></li>
                   </ul>
                 </div>
               </div>
-
 
             </div>
 

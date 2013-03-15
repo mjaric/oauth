@@ -10,3 +10,8 @@ en:
   search: "Pretraga"
   dismiss: "Ponisti"
   sign_in: "Logovanje"
+  price: "Cene"
+  title: "Naziv"
+  asc: "rastuće"
+  desc: "opadajuće"
+  sort_by: "Sortiranje"
