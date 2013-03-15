@@ -15,7 +15,7 @@
     .caption{
     }
     .title {
-        margin-bottom: 10px;
+        margin-top: 0; margin-bottom: 10px;
         line-height: normal;
         height: 110px; width: 100%;
         display: table;
@@ -23,6 +23,10 @@
         a {
             display: table-cell;
             vertical-align: middle;
+            color: @primaryColor;
+            &:hover{
+                color: darken(@primaryColor, 15%);
+            }
         }
     }
     .price {
@@ -39,7 +43,7 @@
 }
 
 .in-cart{
-	#gradient > .vertical( @white, lighten(@primaryColor, 25%) );
+	#gradient > .vertical( @white, lighten(@primaryColor, 15%) );
 	border: 1px solid @primaryColor;
     .box-shadow(0 0 10px rgba(255,154,0,.8));
 	position: relative;
@@ -61,5 +65,10 @@
 	}
     .price {
         color: @white;
+    }
+    .title {
+        a {
+            color: @white;
+        }
     }
 }
