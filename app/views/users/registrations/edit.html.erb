@@ -1,29 +1,55 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Izmenite vase podatke</h2>
+<hr>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put , :class => 'form-horizontal' }) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true, :disabled => true %></div>
+    <%= devise_error_messages! %>
 
-    <div><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></div>
+    <div class="control-group">
+      <%= f.label :email, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.email_field :email, :disabled => true %>
+      </div>
+    </div>
+
+    <div class="control-group">
+        <%= f.label :name, :class => 'control-label' %>
+        <div class="controls">
+            <%= f.text_field :name %>
+        </div>
+    </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+    <div class="control-group">
+        <%= f.label :password, :class => 'control-label' %>
+        <div class="controls">
+            <%= f.password_field :password, :autocomplete => "off" %> <span class="help-inline"><strong>Napomena:</strong> Ostavite prazno ukoliko ne zelite promenu lozinke</span>
+        </div>
+    </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div class="control-group">
+        <%= f.label :password_confirmation, :class => 'control-label' %>
+        <div class="controls">
+            <%= f.password_field :password_confirmation %>
+        </div>
+    </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+    <div class="control-group">
+        <%= f.label :current_password, :class => 'control-label' %>
+        <div class="controls">
+            <%= f.password_field :current_password %> <span class="help-inline"><strong>Napomena:</strong> Unesite trenutnu lozinku da bi ste potvrdili promene</span>
+        </div>
+    </div>
 
-  <div><%= f.submit "Update" %></div>
+    <div class="form-actions">
+      <%= f.submit "Update", :class => 'btn btn-primary' %>
+      <%= link_to "Cancel", root_path, :class => 'btn' %>
+    </div>
+
 <% end %>
 
 
-<%= link_to "Back", :back %>
+
