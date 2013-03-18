@@ -1,0 +1,66 @@
+  <div class="row-fluid">
+    <div class="span6">
+      <h2><%= t(:sign_in) %></h2>
+      <hr class="devide"/>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
+
+          <div class="control-group">
+            <%= f.label :email, class: 'control-label' %>
+            <div class="controls">
+              <%= f.email_field :email, :autofocus => true %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <%= f.label :password, class: 'control-label' %>
+            <div class="controls">
+              <%= f.password_field :password %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+            <%= f.button "Sign in", type: 'submit', class: 'btn btn-large btn-primary' %>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+            <% if devise_mapping.rememberable? -%>
+              <label class="checkbox">
+                <%= f.check_box :remember_me, class: 'checkbox' %> Remember me
+              </label>
+            <% end -%>
+            </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="span6">
+        <h2>Ulogujte se preko vaseg naloga za</h2>
+        <hr class="devide"/>
+        <div class="row-fluid">
+            <div class="span6 offset3">
+                <p>
+                <a href="/auth/facebook" class="btn btn-block btn-large btn-primary"><i class="icon-facebook-sign icon-2x"></i></a>
+                </p>
+                <p>
+                <a href="/auth/google" class="btn btn-block btn-large btn-primary"><i class="icon-google-plus-sign  icon-2x"></i></a>
+                </p>
+                <p>
+                <a href="/auth/twitter" class="btn btn-block btn-large btn-primary"><i class="icon-twitter  icon-2x"></i></a>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="span12">
+    <%= render "devise/shared/links" %>
+  </div>
+
+
+

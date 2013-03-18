@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'public'
+  before_filter :store_location
 
   helper_method :current_cart, :sort_column, :sort_direction
+
+  private
 
   # Devise: Where to redirect users once they have logged in
   def after_sign_in_path_for(resource)
@@ -10,10 +13,12 @@ class ApplicationController < ActionController::Base
     if current_user.admin?
       @final_url = admin_products_path
     end
-    @final_url
+    session[:previous_url] || @final_url    
   end
 
-  private
+  def store_location
+    session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
+  end
 
   # Initialize cart
   def current_cart
