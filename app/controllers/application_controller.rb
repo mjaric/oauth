@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'public'
-  before_filter :store_location
+  #before_filter :store_location
 
   helper_method :current_cart, :sort_column, :sort_direction
 
@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
       @final_url = admin_products_path
     end
     session[:previous_url] || @final_url    
+    #@final_url    
   end
 
   def store_location

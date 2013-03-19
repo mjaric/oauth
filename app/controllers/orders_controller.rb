@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource
+  
+  before_filter :logged_in
 
   # GET /orders
   # GET /orders.json
@@ -101,6 +102,12 @@ class OrdersController < ApplicationController
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to new_user_session_url, :flash => { :error => 'Morate biti ulogovani da bi obavili narucivanje proizvoda.' }
+  end
+
+  private
+  def logged_in
+    store_location
+    authenticate_user!
   end
 
 end

@@ -37,12 +37,14 @@
         </div>
     </div>
 
+    <% if @user.needs_password? %>
     <div class="control-group">
         <%= f.label :current_password, :class => 'control-label' %>
         <div class="controls">
             <%= f.password_field :current_password %> <span class="help-inline"><strong>Napomena:</strong> Unesite trenutnu lozinku da bi ste potvrdili promene</span>
         </div>
     </div>
+    <% end %>
 
     <div class="form-actions">
       <%= f.submit "Update", :class => 'btn btn-primary' %>
