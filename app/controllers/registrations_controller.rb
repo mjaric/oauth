@@ -5,13 +5,19 @@ class RegistrationsController < Devise::RegistrationsController
     #raise params[:user].to_yaml
     # In case that user don't have authorizations added, need to provide confirm password
     successfully_updated = if @user.needs_password?
+        logger.debug('in need')
       @user.update_with_password(params[:user])
     else
       # remove the virtual current_password attribute update_without_password
       # doesn't know how to ignore it
+        logger.debug('not need pass')
       params[:user].delete(:current_password)
       # @user.update_without_password(params[:user])
-      @user.update_attributes(params[:user])
+
+        params[:user].delete(:password) if params[:user][:password].blank?
+        params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+
+        @user.update_attributes(params[:user])
     end
 
     if successfully_updated

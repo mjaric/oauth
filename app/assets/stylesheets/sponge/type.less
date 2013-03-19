@@ -16,12 +16,22 @@ h1, h2, h3, h4, h5, h6 {
     h1, h2, h3, h4, h5, h6 {
         text-shadow:1px 1px 3px rgba(0,0,0,.5);
     }
+
+    .page-header{
+        border-bottom: 2px solid @primaryColor;
+    }
+
+    .table{
+        thead, tbody {
+            td, th {
+                border-color: @white !important;
+            }
+        }
+    }
    
     hr {
         border: none; border-top: 2px solid @primaryColor;
-        &.divide{
-            margin: 0; margin-bottom: 30px;
-        }
+        margin-top: 5px;
     }
     .btn-toolbar {
         &.sort-actions{

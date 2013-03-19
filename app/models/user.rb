@@ -52,9 +52,9 @@ class User < ActiveRecord::Base
   end
 
   def needs_password?
-    # logger.debug(authentications.empty?)
-    # logger.debug(!encrypted_password.blank?)
-    (authentications.empty? || !encrypted_password.blank?)
+    #logger.debug(authentications.empty?)
+    #logger.debug(!encrypted_password.blank?)
+    authentications.empty?
   end
 
 

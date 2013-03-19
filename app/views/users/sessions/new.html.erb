@@ -1,7 +1,7 @@
   <div class="row-fluid">
     <div class="span6">
       <h2><%= t(:sign_in) %></h2>
-      <hr class="devide"/>
+      <hr/>
       <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
 
           <div class="control-group">
@@ -37,17 +37,17 @@
     </div>
     <div class="span6">
         <h2>Ulogujte se preko vaseg naloga za</h2>
-        <hr class="devide"/>
+        <hr/>
         <div class="row-fluid">
             <div class="span6 offset3">
                 <p>
-                <a href="/auth/facebook" class="btn btn-block btn-large btn-primary"><i class="icon-facebook-sign icon-2x"></i></a>
+                <a href="/auth/facebook" class="btn btn-block btn-large btn-primary"><i class="icon-facebook-sign icon-2x"></i> <span>Facebook</span></a>
                 </p>
                 <p>
-                <a href="/auth/google" class="btn btn-block btn-large btn-primary"><i class="icon-google-plus-sign  icon-2x"></i></a>
+                <a href="/auth/google" class="btn btn-block btn-large btn-primary"><i class="icon-google-plus-sign  icon-2x"></i> <span>Google</span></a>
                 </p>
                 <p>
-                <a href="/auth/twitter" class="btn btn-block btn-large btn-primary"><i class="icon-twitter  icon-2x"></i></a>
+                <a href="/auth/twitter" class="btn btn-block btn-large btn-primary"><i class="icon-twitter  icon-2x"></i> <span>Twitter</span></a>
                 </p>
             </div>
         </div>

@@ -4,7 +4,7 @@
   <thead>
   <tr>
     <th>Proizvod</th>
-    <th>Cena po kom.</th>
+    <th style="text-align: right">Cena po kom.</th>
     <th>Kolicina</th>
     <th style="text-align: right">Cena</th>
   </tr>
@@ -29,6 +29,6 @@
 </table>
 
 <div class="btn-toolbar">
-<%= link_to raw('<i class="icon-check"></i> Naruci'), new_order_path, :class => 'btn btn-info' %>
-<%= link_to 'Moja Korpa', cart_path(current_cart), :class => 'btn btn-warning pull-right' %>
+<%= link_to raw('<i class="icon-trash pull-left"></i> Izprazni korpu'), current_cart, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-large btn-warning' %>
+<%= link_to raw('<i class="icon-check pull-left"></i> Naruci'), new_order_path, :class => 'btn btn-large btn-info pull-right' %>
 </div>
