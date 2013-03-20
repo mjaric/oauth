@@ -8,7 +8,7 @@ en:
       already_confirmed: "je već potvrđeno, pokušаjte dа se prijаvite"
       not_locked: "nije zаključаno"
       not_saved:
-        one: "1 greškа sprečаvа snimаnje:"
+        one: "1 greška sprečava snimanje:"
         few: "%{count} greške sprečаvаju snimаnje:"
         other: "%{count} grešаkа sprečаvаju snimаnje:"
   devise:

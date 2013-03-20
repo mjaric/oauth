@@ -1,22 +1,64 @@
 <%- model_class = Product -%>
 <%- count = current_cart.count_product(@product.id) -%>
-<h2><%= @product.title %></h2>
-<hr class="divide">
+<h2>
+    <%= @product.title %>
+    <% if @count != '' %>
+    <div class="product-title-icon">
+        <i class="icon-shopping-cart">
+          <span class="badge badge-warning" data-placement="right" rel="tooltip" title="Proizvod je dodat u vasu korpu"><%= count %></span>
+        </i>
+    </div>
+    <% end %>
+</h2>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @product.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @product.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
-  <dd><%= @product.category.name %></dd>
-</dl>
+<hr>
+
+<div class="row-fluid">
+    <div class="span5">
+        <p><%= @product.description %></p>
+        <h2 class="price"><%= format_price(@product.price) %></h2>
+    </div>
+    <div class="span7" id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+        <% default = @product.default_picture_id ? @product.pictures.find(@product.default_picture_id) : @product.pictures.first %>
+
+        <% if default %>
+        <ul class="thumbnails default">
+            <li class="span12">
+                <a href="<%= default.image_url %>" title="<%= default.name %>" data-gallery="gallery" class="thumbnail">
+                <%= image_tag(default.image_url :alt => default.name) %>
+                </a>
+            </li>
+        </ul>
+        <% end %>
+
+        <ul class="thumbnails slide">
+        <% @product.pictures.each do |picture| %>
+            <% if default.id != picture.id %>
+            <li class="span4">
+                <a href="<%= picture.image_url %>" title="<%= picture.name %>" data-gallery="gallery" class="thumbnail">
+                <%= image_tag(picture.image_url(:thumb), :alt => picture.name) %>
+                </a>
+            </li>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+</div>
+
+
+
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn'  %>
-  <% if count != '' %>
-      <p><%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj jos u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-warning' %></p>
-  <% else %>
-      <p><%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-primary' %></p>
-  <% end %>
+    <div class="row-fluid">
+        <div class="span6">
+            <%= link_to 'Prethodna strana', :back, :class => 'btn btn-large btn-info'  %>
+        </div>
+        <div class="span6">
+          <% if count != '' %>
+              <%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj jos u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-warning pull-right' %>
+          <% else %>
+              <%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-primary pull-right' %>
+          <% end %>
+        </div>
+    </div>
 </div>

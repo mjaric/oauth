@@ -2,5 +2,6 @@
 *= require_self
 *= require products
 *= require sponge/sponge
+*= require admin/bootstrap-image-gallery
 *= require cart
  */

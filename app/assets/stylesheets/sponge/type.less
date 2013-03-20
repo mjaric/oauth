@@ -33,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
         border: none; border-top: 2px solid @primaryColor;
         margin-top: 5px;
     }
+
     .btn-toolbar {
         &.sort-actions{
             margin: 0; margin-top: 10px;
@@ -58,6 +59,28 @@ h1, h2, h3, h4, h5, h6 {
         #translucent > .background(@color, @alpha);
     }
 
+    .product-title-icon {
+        float: right;
+        i {
+            position: relative;
+            font-size: 1.5em;
+            span {
+                position: absolute;
+                top: 0px; right: -10px;
+                font-family: Helvetica;
+            }
+        }
+    }
+
+    .thumbnails {
+        &.default {
+            margin-top: 10px;
+        }
+        &.slide {
+            margin-bottom: 20px;
+        }
+    }
+
     form {
         margin-bottom: 0;
         #error_explanation {
@@ -69,13 +92,20 @@ h1, h2, h3, h4, h5, h6 {
                 color: @white;
             }
         }
+        .field_with_errors {
+            display: initial;
+        }
         .form-actions {
             border-top: none;
             margin: 0; margin-top: 10px;
             .info-box();
         }
-        .field_with_errors {
-            display: initial;
-        }
     }
+
+    .form-actions {
+        border-top: none;
+        margin: 0; margin-top: 10px;
+        .info-box(gray, 0.5);
+    }
+    
 }
