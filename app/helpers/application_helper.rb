@@ -37,12 +37,16 @@ module ApplicationHelper
     end
   end
 
-  def shorty(text, max = 50, dots = '...')
+  def shorty(text, max = 50, raw = true, dots = '...')
       if text.length >= max
         original_text = text
         index = text.rindex(' ', max)
         text = index == nil ? text.slice(0, max) : text.slice(0, index)
-        text = raw ("<span title='#{original_text}'>" + text + dots + "</span>")
+        if raw
+            text = raw ("<span title='#{original_text}'>" + text + dots + "</span>")
+        else
+            text = text + dots
+        end
       end
       text
   end

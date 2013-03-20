@@ -1,0 +1,8 @@
+<%- count = current_cart.count_product(product.id) -%>
+<% if count != '' %>
+    <div class="product-title-icon">
+      <i class="icon-shopping-cart icon-3x">
+        <span class="badge badge-warning" data-placement="right" rel="tooltip" title="Proizvod je dodat u vasu korpu"><%= count %></span>
+      </i>
+    </div>
+<% end %>

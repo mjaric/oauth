@@ -6,6 +6,14 @@ if ($("#product-<%=product.id%>").length > 0){
     $('#product-<%=product.id%>').html("<%=j render :partial => 'products/product', :locals => {:product => product} %>");
 }
 
+if ($("#product-<%=product.id%>-show-current-card").length > 0){
+    $('#product-<%=product.id%>-show-current-card').html("<%=j render :partial => 'products/current_card', :locals => { :product => product } %>");
+}
+
+if ($("#product-<%=product.id%>-show-form-actions").length > 0){
+    $('#product-<%=product.id%>-show-form-actions').html("<%=j render :partial => 'products/form_actions', :locals => { :product => product } %>");
+}
+
 // Init tooltip in case that product have long name
 $('[rel="tooltip"]').tooltip();
 

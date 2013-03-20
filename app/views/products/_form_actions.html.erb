@@ -1,0 +1,13 @@
+<%- count = current_cart.count_product(product.id) -%>
+<div class="row-fluid">
+  <div class="span6">
+    <%= link_to 'Prethodna strana', :back, :class => 'btn btn-large btn-info' %>
+  </div>
+  <div class="span6">
+    <% if count != '' %>
+        <%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj jos u korpu'), line_items_path(product_id: product), :method => :post, remote: true, :class => 'btn btn-large btn-warning pull-right' %>
+    <% else %>
+        <%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj u korpu'), line_items_path(product_id: product), :method => :post, remote: true, :class => 'btn btn-large btn-primary pull-right' %>
+    <% end %>
+  </div>
+</div>

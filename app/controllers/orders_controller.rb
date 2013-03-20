@@ -54,6 +54,7 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         @order.order!
+        @order.send_mail
         logger.info('gate 2')
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil

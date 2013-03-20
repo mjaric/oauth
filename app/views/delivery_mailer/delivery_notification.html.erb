@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zahtev za dostavu #<%= @order.id %></title>
+
+</head>
+<body>
+
+<table border="0" cellpadding="0" cellspacing="0" width="700">
+  <tr>
+    <td>
+      <h1>Vas Zahtev za Dostavu br. <%= "#{@order.id}" %></h1>
+
+      <p>
+        Zahtev za isporuku narucene robe je poslat. U daljem tekstu mozete videti detalje naruzbenice.
+      </p>
+      <% unless @order.comment.nil? or @order.comment.blank? %>
+          <h2>Napomena od strane narucioca:</h2>
+
+          <p style="padding: 8px 35px 8px 14px; margin-bottom: 18px; background-color: #D9EDF7;border: 1px solid #BCE8F1;color: #3A87AD; padding-top: 14px; padding-bottom: 14px;">
+            <%= @order.comment %>
+          </p>
+      <% end %>
+      <h2>Podaci o naruciocu</h2>
+      <ul style="list-style: none">
+        <li>
+          <b>Ime i prezime: </b>
+          <%= "#{@order.first_name} #{@order.last_name}" %>
+        </li>
+        <li>
+          <b>Mesto isporuke: </b>
+          <%= "#{@order.delivery_address}, #{@order.delivery_zip_code} #{@order.delivery_city}" %>
+        </li>
+        <li>
+          <b>Telefon: </b>
+          <%= "#{@order.phone_number} #{@order.phone_number2}" %>
+        </li>
+        <li>
+          <b>e-posta: </b>
+          <%= "#{@order.email}" %>
+        </li>
+      </ul>
+      <h2>Naruceni proizvodi</h2>
+      <table border="1" cellspacing="0" style="width: 100%;border: 1px solid #DDD;">
+        <tr>
+          <th>Naziv Proizvoda</th>
+          <th style="width: 70px; text-align: right;">Kolicina</th>
+          <th style="width: 100px; text-align: right;">Jedinicna cena</th>
+          <th style="width: 100px; text-align: right;">Ukupno</th>
+        </tr>
+        <% @order.line_items.each do |order_item| %>
+            <tr>
+              <td><%= link_to order_item.product.title, product_url(order_item.product_id) %></td>
+              <td style="text-align: right;"><%= order_item.quantity %></td>
+              <td style="text-align: right;"><%= format_price(order_item.unit_price) %></td>
+              <td style="text-align: right;"><%= format_price(order_item.total_price) %></td>
+            </tr>
+        <% end %>
+        <tr>
+          <td colspan="4" style="text-align: right;">
+            <span>Ukupno<sup>*</sup>: <b><%= format_price(@order.total_price) %></b></span>
+          </td>
+        </tr>
+      </table>
+      <hr/>
+      <h4>Napomena:</h4>
+
+      <div>
+        <ul>
+          <li>* U cenu je uracunat porez 18%</li>
+          <li>Isporuka i plaćanje se vrši isključivo putem kurirske službe.</li>
+          <li>Sva prava na izmene zadržava isporučilac.</li>
+          <li>Cene navedene u narudžbenici važe 30 dana od dana naručivanja proizvoda.</li>
+          <li>Vreme isporuke je 2 dana osim za proizvode koji su naručeni petkom posle 18h, subotom ili nedeljom.
+            Kurirska služba ne vrši isporuku tokom vikenda.
+          </li>
+        </ul>
+      </div>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

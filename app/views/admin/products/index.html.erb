@@ -18,8 +18,8 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= link_to product.id, admin_products_path(product) %></td>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
+        <td><%= shorty(product.title) %></td>
+        <td><%= shorty(product.description) %></td>
         <td><%= product.category_id %></td>
         <td><%= product.price %></td>
         <td><%=l product.created_at %></td>

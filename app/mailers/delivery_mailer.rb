@@ -1,8 +1,7 @@
-class DeliveryMailer
+class DeliveryMailer < ActionMailer::Base
+add_template_helper(ApplicationHelper)
 
-  default :from => 'toni.petrovic@gmail.com',
-          :bcc => (Rails.env.production? ? %w(toni.petrovic@gmail.com) : %w(toni.petrovic@gmail.com))
-
+  default :from => 'toni.petrovic@gmail.com', :bcc => (Rails.env.production? ? %w(toni.petrovic@gmail.com) : %w(toni.petrovic@gmail.com))
 
   def delivery_notification(order)
     @order = order

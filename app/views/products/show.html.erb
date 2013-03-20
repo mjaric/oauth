@@ -1,64 +1,71 @@
 <%- model_class = Product -%>
-<%- count = current_cart.count_product(@product.id) -%>
-<h2>
-    <%= @product.title %>
-    <% if @count != '' %>
-    <div class="product-title-icon">
-        <i class="icon-shopping-cart">
-          <span class="badge badge-warning" data-placement="right" rel="tooltip" title="Proizvod je dodat u vasu korpu"><%= count %></span>
-        </i>
-    </div>
-    <% end %>
-</h2>
+
+<div id="product-<%= @product.id %>-show-current-card">
+<%= render partial: 'products/current_card', locals: { :product => @product} %>
+</div>
+
+<h2><%= shorty(@product.title, 65) %></h2>
 
 <hr>
 
-<div class="row-fluid">
+<div id="product-show" class="row-fluid">
     <div class="span5">
-        <p><%= @product.description %></p>
-        <h2 class="price"><%= format_price(@product.price) %></h2>
+        <div class="description"><%= raw(@product.description) %></div>
+        <h2 class="price">Cena <%= format_price(@product.price) %></h2>
     </div>
     <div class="span7" id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+
         <% default = @product.default_picture_id ? @product.pictures.find(@product.default_picture_id) : @product.pictures.first %>
 
         <% if default %>
         <ul class="thumbnails default">
             <li class="span12">
-                <a href="<%= default.image_url %>" title="<%= default.name %>" data-gallery="gallery" class="thumbnail">
+                <a href="<%= default.image_url %>" title="<%= shorty(default.name ||= @product.title, 50, false) %>" data-gallery="gallery" class="thumbnail">
                 <%= image_tag(default.image_url :alt => default.name) %>
                 </a>
             </li>
         </ul>
         <% end %>
 
-        <ul class="thumbnails slide">
-        <% @product.pictures.each do |picture| %>
-            <% if default.id != picture.id %>
-            <li class="span4">
-                <a href="<%= picture.image_url %>" title="<%= picture.name %>" data-gallery="gallery" class="thumbnail">
-                <%= image_tag(picture.image_url(:thumb), :alt => picture.name) %>
-                </a>
-            </li>
-            <% end %>
+        <% if @product.pictures.size > 1 %>
+        <div id="product-pictures-slider" class="carousel slide">
+            <a class="carousel-control left" href="#product-pictures-slider" data-slide="prev" style="margin-right: 10px;">‹</a>
+            <a class="carousel-control right" href="#product-pictures-slider" data-slide="next">›</a>
+            <div class="carousel-inner">
+            <ul class="thumbnails slide">
+            <% @index = 0 %>
+            <%-
+                pictures = @product.pictures
+                pictures.each_with_index { |picture, i|
+                    pictures.delete_at(i) if picture.id == default.id
+                }
+            -%>
+            <% pictures.each_slice(3) do |slice| %>
+                <div class="item <%= @index == 0 ? 'active' : '' %>">
+                    <% slice.each do |picture| %>
+
+                    <% if default.id != picture.id %>
+                        <li class="span4">
+                            <a href="<%= picture.image_url %>" title="<%= shorty(picture.name ||= @product.title, 50, false) %>" data-gallery="gallery" class="thumbnail">
+                                <%= image_tag(picture.image_url(:thumb), :alt => picture.name) %>
+                            </a>
+                        </li>
+                    <% end %>
+
+                    <% end %>
+                </div>
+                <% @index += 1 %>
+                <% end %>
+            </ul>
+            </div>
+            <!--/.carousel-inner -->
+            </div>
+        <!--/#product-pictures-slider -->
         <% end %>
-        </ul>
+
     </div>
 </div>
 
-
-
-
-<div class="form-actions">
-    <div class="row-fluid">
-        <div class="span6">
-            <%= link_to 'Prethodna strana', :back, :class => 'btn btn-large btn-info'  %>
-        </div>
-        <div class="span6">
-          <% if count != '' %>
-              <%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj jos u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-warning pull-right' %>
-          <% else %>
-              <%= link_to raw('<i class="icon-shopping-cart"></i> Dodaj u korpu'), line_items_path(product_id: @product), :method => :post, remote: true, :class => 'btn btn-large btn-primary pull-right' %>
-          <% end %>
-        </div>
-    </div>
+<div id="product-<%= @product.id %>-show-form-actions" class="form-actions">
+<%= render partial: 'products/form_actions', locals: { :product => @product}  %>
 </div>
