@@ -46,8 +46,8 @@ Oauth::Application.configure do
     domain: "toni.rs",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'toni.petrovic',
-    password: 'toni34&*'
+    user_name: '***',
+    password: '***'
   }
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
